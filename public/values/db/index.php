@@ -1,0 +1,35 @@
+<html lang="pl">
+    <head>
+        <title>Stream • Twoje gry</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="../images/logo128.png" type="image/png">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
+        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+        <link rel="stylesheet" href="../dimensions.css">
+        <link rel="stylesheet" href="../colors.css">
+        <link rel="stylesheet" href="../styles/base.css">
+        <link rel="stylesheet" href="../styles/headers.css">
+        <link rel="stylesheet" href="../styles/game-block.css">
+
+        <script src="../prefabs/headers.js"></script>
+        <script src="../code/user.js"></script>
+        <script src="../prefabs/addGame.js"></script>
+        <script src="../code/page_yourGames.js"></script>
+    </head>
+    <body>
+        <main>
+            <div id="yourGamesContainer"></div>
+            <script>
+                PrefabAddGames.addGames(document.getElementById('yourGamesContainer'), gamesData);
+            </script>
+        </main>
+        </body>
+    <script src="../code/base.js"></script>
+</html>
+
+

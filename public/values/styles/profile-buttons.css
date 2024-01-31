@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+}
+
+.container, .box1 {
+    position: fixed;
+    top: 63%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    width: 35%; /* 30% szerokości widoku */
+    height: 12vh; /* 25% wysokości widoku */
+    background-color: #f0f0f0;
+    border: 2px solid #000;
+    border-radius: 15px; /* Dodano zaokrąglenie rogów */
+    display: flex; /* Dodano flexbox do centralizacji tekstu */
+    flex-direction: column; /* Ustawienie kierunku flexbox na kolumnę */
+    justify-content: center; /* Centralizacja w pionie */
+    align-items: center; /* Centralizacja w poziomie */
+    color: black;
+    font-size: 2vw; /* 2% szerokości widoku */
+}
+
+.container, .box2 {
+    position: fixed;
+    top: 80%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    width: 35%; /* 30% szerokości widoku */
+    height: 12vh; /* 25% wysokości widoku */
+    background-color: #f0f0f0;
+    border: 2px solid #000;
+    border-radius: 15px; /* Dodano zaokrąglenie rogów */
+    display: flex; /* Dodano flexbox do centralizacji tekstu */
+    flex-direction: column; /* Ustawienie kierunku flexbox na kolumnę */
+    justify-content: center; /* Centralizacja w pionie */
+    align-items: center; /* Centralizacja w poziomie */
+    color: black;
+    font-size: 2vw; /* 2% szerokości widoku */
+}
+
+.box-title {
+    font-weight: bold;
+}
+
+.box-content {
+    margin-top: 5px;
+
+}

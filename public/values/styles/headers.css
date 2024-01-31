@@ -1,0 +1,49 @@
+header {
+    background-color: var(--color-primary-second) !important;
+}
+
+.mdc-top-app-bar__section img { /* logo */
+    margin-right: var(--margin-standard);
+}
+
+header .mdc-top-app-bar__row:nth-child(1) { /* górne akcje */
+    height: var(--height-header-first-row);
+}
+
+header .mdc-top-app-bar__row:nth-child(1) .mdc-top-app-bar__section .mdc-button { /* górne akcje */
+    color: var(--color-secondary);
+    font-size: var(--size-text-header-first-row);
+    transition-duration: var(--animation-time);
+}
+
+header .mdc-top-app-bar__row:nth-child(2) { /* separator */
+    height: var(--length-separator);
+}
+
+header .mdc-top-app-bar__row:nth-child(2) .mdc-top-app-bar__section { /* separator */
+    padding: var(--margin-separator);
+}
+
+header .mdc-top-app-bar__row:nth-child(2) .mdc-top-app-bar__section hr { /* separator */
+    width: var(--percent-separator);
+    border-color: var(--color-secondary);
+}
+
+header .mdc-top-app-bar__row:nth-child(3) .mdc-top-app-bar__section .mdc-button { /* strony */
+    color: var(--color-secondary);
+    font-size: var(--size-text-header-second-row);
+    margin-right: var(--margin-standard);
+    transition-duration: var(--animation-time);
+}
+.mdc-top-app-bar__section .mdc-icon-button { /* przycisk szukaj */
+    color: var(--color-secondary);
+    transition-duration: var(--animation-time);
+}
+
+.mdc-top-app-bar__action-item:hover { /* elementy, kursor na */
+    color: var(--color-accent) !important;
+}
+
+.current-page-action-item { /* elementy, kursor na */
+    color: var(--color-accent-second) !important;
+}

@@ -1,0 +1,53 @@
+.user-image img {
+    display: flex;
+    flex-direction: column; /* Kierunek rozmieszczenia elementów - pionowy */
+    justify-content: space-between; /* Rozmieszczenie równomierne wzdłuż osi pionowej */
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border: 3px solid #000;
+    margin: 5%;
+}
+
+.user-profile-block {
+    display: flex;
+    margin-top: -30%;
+    margin-left: 2%;
+    left: 30%;
+    width: 35%; /* 30% szerokości widoku */
+    height: 30vh; /* 25% wysokości widoku */
+    padding-right: 3%;
+    background-color: #363636;
+    border: 2px solid #000;
+}
+
+.user-actions button {
+    position: absolute;
+    top: 42%;
+    left: 18%;
+    transform: translateX(-50%);
+    padding: 1vw;
+    background-color: #f0f0f0;
+    color: #000;
+    border: 1.5px solid #000;
+    cursor: pointer;
+    margin-top: 1vw;
+    transition: background-color 0.3s ease;
+    max-width: 200px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    box-sizing: border-box;
+    top: 27%;
+    left: 28%;
+    color: white;
+    font-size: 2vw; /* 2% szerokości widoku */
+    position: absolute;
+    transform: translateX(-50%);
+    max-width: 300px; /* Maksymalna szerokość w pikselach */
+}
