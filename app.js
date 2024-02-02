@@ -11,7 +11,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'gameslib'
+    database: 'stream'
 });
 
 db.connect((error) => {
@@ -33,16 +33,8 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-app.get("/register", (req, res) => {
-    res.render("register");
-});
-
-app.get("/login", (req, res) => {
-    res.render("login");
-});
-
 app.post("/auth/register", (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, password_confirm } = req.body;
 
     db.query('SELECT login FROM user_credentials WHERE login = ?', [email], async (error, result) => {
         if (error) {
@@ -52,6 +44,10 @@ app.post("/auth/register", (req, res) => {
         if( result.length > 0 ) {
             return res.render('register', {
                 message: 'This email is already in use'
+            })
+        } else if(password != password_confirm) {
+            return res.render('register', {
+                message: 'Passwords do not match!'
             })
         }
 
@@ -67,22 +63,47 @@ app.post("/auth/register", (req, res) => {
     });
 });
 
-app.post("/auth/login", (req, res) => {
+function queryAsync(query, values) {
+    return new Promise((resolve, reject) => {
+        db.query(query, values, (error, results) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+}
+
+app.post("/auth/login", async (req, res) => {
     const { name, password } = req.body;
 
-    db.query('SELECT * FROM user_credentials WHERE login = ? AND password = ?', [name, password], (error, result) => {
-        if (error) {
-            console.log(error);
-            return res.status(500).json({ message: 'Internal Server Error' });
-        }
+    try {
+        const result = await queryAsync('SELECT userID, userTypeID FROM user_credentials WHERE login = ? AND password = ?', [name, password]);
 
         if (result.length === 0) {
             return res.status(401).json({ message: 'Invalid login credentials' });
         }
 
+        const user = result[0];
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Invalid login credentials' });
+        }
+            
         console.log('User logged in successfully');
-        return res.status(200).json({ message: 'Logged in successfully' });
-    });
+
+        const d = new Date();
+        d.setTime(d.getTime() + (30 * 60 * 1000));
+        res.cookie("userId", user.userID, { expires: d, path:'/' });
+        res.cookie("userType", user.userTypeID, { expires: d, path:'/' });
+        res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
 });
 
 app.listen(5000, () => {

@@ -1,18 +1,15 @@
-const {createConnection} = require('mysql');
+const {createPool} = require('mysql2');
 
-const pool = createConnection({
+const pool = createPool({
     host: "localhost",
     port: "3306",
     user: "root",
     password: "root",
     database: "stream"
-})
+}).promise()
 
-pool.query('select * from users', (err, result) => {
-    if(err){
-        return console.log(err);
-    }
-    return console.log(result);
-})
+async function getUsers () {
+    const [rows] = await pool.query("SELECT * FROM user_credentials")
+}
 
 module.exports = pool;
