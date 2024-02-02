@@ -56,29 +56,20 @@ const User = (function(){
 
     //zwraca true lub fałsz w zależności czy udało się zalogować
     function tryLoggin(email, password){
-        let data = new URLSearchParams();
-        data.append('email', email);
-        data.append('password', password);
-
-        // Wyślij żądanie za pomocą Fetch
-        return fetch('/user.php', {
-            method: 'POST',
-            body: data,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-
-            .then(response => {
-                for(let i = 0; i < arr.length; i++){
-                    if(arr[i].email == email && arr[i].password == password) {
-                        createUserIdCookie(arr[i].id, arr[i].user_type, 30);
-                        return true;
-                    }
+        return new Promise((resolve, reject) => {
+            const sql = 'SELECT * FROM user_credentials WHERE login = ? AND password = ?';
+            const connection = require('./connection');
+            
+            connection.query (sql, [email, password], (err, result) => {
+                if(err) {
+                    console.error('Error executing login MySQL query:', err);
+                    return reject(err);
                 }
-                return false;
-            })
-            .catch(error => console.error('Błąd sieciowy:', error));
+
+                const users = result;
+                resolve(users.length > 0);
+            });
+        });
     }
 
     function logOut(){
