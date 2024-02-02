@@ -61,7 +61,7 @@ const User = (function(){
         data.append('password', password);
 
         // Wyślij żądanie za pomocą Fetch
-        return fetch('../../values/code/user.php', {
+        return fetch('/user.php', {
             method: 'POST',
             body: data,
             headers: {
