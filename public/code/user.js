@@ -54,23 +54,23 @@ const User = (function(){
         return getUserIdFromCookies();
     }
 
-    //zwraca true lub fałsz w zależności czy udało się zalogować
-    function tryLoggin(email, password){
+    function tryLoggin(email, password) {
         return new Promise((resolve, reject) => {
             const sql = 'SELECT * FROM user_credentials WHERE login = ? AND password = ?';
             const connection = require('./connection');
-            
-            connection.query (sql, [email, password], (err, result) => {
-                if(err) {
-                    console.error('Error executing login MySQL query:', err);
-                    return reject(err);
-                }
 
-                const users = result;
-                resolve(users.length > 0);
-            });
+            // Use the executeQuery function from connection.js to execute the query
+            connection.executeQuery(sql, [email, password])
+                .then(result => {
+                    resolve(result.length > 0);
+                })
+                .catch(err => {
+                    console.error('Error executing login MySQL query:', err);
+                    reject(err);
+                });
         });
     }
+
 
     function logOut(){
         createUserIdCookie("", "", -30);
