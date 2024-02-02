@@ -36,11 +36,11 @@ const User = (function(){
         const type = getUserTypeFromCookies();
         switch(type){
             case "1":
-                return UZYTKOWNIK_ZALOGOWANY;
+                return SOCIAL_MANAGER;
             case "2":
                 return TWORCA;
             case "3":
-                return SOCIAL_MANAGER;
+                return UZYTKOWNIK_ZALOGOWANY;
             case "4":
                 return WERYFIKATOR;
             default:
