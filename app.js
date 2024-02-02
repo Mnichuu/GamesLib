@@ -33,36 +33,6 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-app.post("/auth/register", (req, res) => {
-    const { name, email, password, password_confirm } = req.body;
-
-    db.query('SELECT login FROM user_credentials WHERE login = ?', [email], async (error, result) => {
-        if (error) {
-            console.log(error);
-        }
-
-        if( result.length > 0 ) {
-            return res.render('register', {
-                message: 'This email is already in use'
-            })
-        } else if(password != password_confirm) {
-            return res.render('register', {
-                message: 'Passwords do not match!'
-            })
-        }
-
-        db.query('INSERT INTO user_credentials (login, email, password,userTypeID) VALUES (?, ?, ?,3)', [name, email, password], (err, result) => {
-            if (err) {
-                console.log(err);
-            } else {
-                return res.render('register', {
-                    message: 'User registered!'
-                });
-            }
-        });
-    });
-});
-
 function queryAsync(query, values) {
     return new Promise((resolve, reject) => {
         db.query(query, values, (error, results) => {
@@ -75,19 +45,43 @@ function queryAsync(query, values) {
     });
 }
 
+app.post("/auth/register", async (req, res) => {
+    const { name, email, password, password_confirm } = req.body;
+
+    try {
+        const result = await queryAsync('SELECT login FROM user_credentials WHERE login = ?', [name]);
+
+        if( result.length > 0 ) {
+            return res.status(403).json({ message: 'This email is already in use' });
+        } else if(password != password_confirm) {
+            return res.status(403).json({ message: 'Passwords do not match!' });
+        }
+        
+        const hashedPassword = await bcrypt.hash(password, 10);
+        
+        await queryAsync('INSERT INTO user_credentials (login, email, password, userTypeID) VALUES (?, ?, ?,3)', [name, email, hashedPassword]);
+
+        res.redirect('/');
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
 app.post("/auth/login", async (req, res) => {
     const { name, password } = req.body;
 
     try {
-        const result = await queryAsync('SELECT userID, userTypeID FROM user_credentials WHERE login = ? AND password = ?', [name, password]);
-
+        const result = await queryAsync('SELECT userID, userTypeID, password FROM user_credentials WHERE login = ?', [name]);
+        
         if (result.length === 0) {
             return res.status(401).json({ message: 'Invalid login credentials' });
         }
 
         const user = result[0];
+        const hashedPassword = user.password
 
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPasswordValid = await bcrypt.compare(password, hashedPassword);
 
         if (!isPasswordValid) {
             return res.status(401).json({ message: 'Invalid login credentials' });
