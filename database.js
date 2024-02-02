@@ -14,3 +14,5 @@ pool.query('select * from users', (err, result) => {
     }
     return console.log(result);
 })
+
+module.exports = pool;
