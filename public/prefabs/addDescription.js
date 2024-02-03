@@ -10,7 +10,7 @@ const PrefabgenerateDesc = (function () {
         }
 
         userData.forEach(userData => {
-            if (userData.user_id == User.getUserId()) {
+            if (userData.userID == User.getUserId()) {
 
                 container.innerHTML += generateDesc(userData);
                 setupEditButton(container, userData); // Dodaj funkcję obsługującą przycisk "Edytuj"

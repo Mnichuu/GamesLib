@@ -1,1 +1,37 @@
-const userData = [{"user_id":"0","username":"Dawid","description":"Lubie placki","games_count":"0","downloaded_games":"0"},{"user_id":"1","username":"Staszekakjsda","description":"hejka","games_count":"10","downloaded_games":"6"},{"user_id":"2","username":"g\u00f3wno","description":"Opis u\u017cytkownika 3","games_count":"6","downloaded_games":"4"},{"user_id":"3","username":"user4","description":"Opis u\u017cytkownika 4","games_count":"0","downloaded_games":"0"},{"user_id":"4","username":"user5","description":"Opis u\u017cytkownika 5","games_count":"0","downloaded_games":"0"},{"user_id":"5","username":"user6","description":"opis hej hej","games_count":"0","downloaded_games":"0"},{"user_id":"6","username":"socialmenago","description":"ale jestem gosc","games_count":"0","downloaded_games":"0"}];
+const gamesData = [
+  {
+    "profileID": 1,
+    "userID": 1,
+    "description": "Administrator account",
+    "nick": "Admin",
+    "profilePhoto": "admin.jpg"
+  },
+  {
+    "profileID": 2,
+    "userID": 2,
+    "description": "Moderator account",
+    "nick": "Mod",
+    "profilePhoto": "moderator.jpg"
+  },
+  {
+    "profileID": 3,
+    "userID": 3,
+    "description": "User 1 account",
+    "nick": "User1",
+    "profilePhoto": "user1.jpg"
+  },
+  {
+    "profileID": 4,
+    "userID": 4,
+    "description": "User 2 account",
+    "nick": "User2",
+    "profilePhoto": "user2.jpg"
+  },
+  {
+    "profileID": 14,
+    "userID": 14,
+    "description": "hej hej",
+    "nick": "gowno",
+    "profilePhoto": "dasd"
+  }
+];

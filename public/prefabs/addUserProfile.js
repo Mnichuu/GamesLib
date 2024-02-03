@@ -10,8 +10,8 @@ const PrefabGenerateUser = (function () {
         }
 
         userData.forEach(userData => {
-            if (userData.user_id == User.getUserId()) {
-                container.innerHTML += generateUser(userData, userData.user_id);
+            if (userData.userID == User.getUserId()) {
+                container.innerHTML += generateUser(userData, userData.userID);
             }
         });
 
@@ -23,7 +23,7 @@ const PrefabGenerateUser = (function () {
     }
 
     function generateUser(userData, userId) {
-        const username = userData.username || 'Brak nazwy użytkownika';
+        const username = userData.nick || 'Brak nazwy użytkownika';
         const imageFile = `../../values/images/avatar0.png`;
 
         return `

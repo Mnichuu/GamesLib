@@ -9,6 +9,14 @@ const gamesData = [
   },
   {
     "ID": 3,
+    "userID": 4,
+    "gameID": 1,
+    "isDownloaded": 1,
+    "name": "Game 1",
+    "verified": 1
+  },
+  {
+    "ID": 5,
     "userID": 14,
     "gameID": 1,
     "isDownloaded": 1,
