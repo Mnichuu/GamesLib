@@ -22,11 +22,10 @@ async function DB2Array (query, values, fileName) {
         let jsonData = JSON.stringify(gamesData, null, 2);
         fs.writeFileSync("public/code/" + fileName, `const gamesData = ${jsonData};`);
 
-        return { status: 200, message: 'Data aquired' };
+        return gamesData;
     } catch (error) {
         console.log(error);
         return { status: 500, message: 'Internal Server Error' };
     }
 }
-
 module.exports={DB2Array};

@@ -20,9 +20,8 @@ const PrefabAddGames = (function() {
         return `
            <div class="game-block">
                 <p>
-                    ${gameData.favourite ? '<span class="material-icons">star</span>' : ''}
-                    <strong>${gameData.gameName}</strong>
-                    ${gameData.downloaded == "1" ? 'Pobrane: <span class="material-icons">done</span>' : 'Pobrane: <span class="material-icons">close</span>'}
+                    <strong>${gameData.name}</strong>
+                    ${gameData.isDownloaded == "1" ? 'Pobrane: <span class="material-icons">done</span>' : 'Pobrane: <span class="material-icons">close</span>'}
                 </p>
             </div>
         `;

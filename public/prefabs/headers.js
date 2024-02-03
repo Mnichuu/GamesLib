@@ -78,10 +78,14 @@ const PrefabHeader = (function(){
 
     function generatePageElement(name, address){
         const currentClass = isThisPageOpen(address) ? CURRENT_PAGE_CLASS : '';
-        return `<a href="..\\` + address + `" class="mdc-button mdc-top-app-bar__action-item ` + currentClass + `">
-                    <span class="mdc-button__ripple"></span>
-                    <span class="mdc-button__label">` + name + `</span>
-                </a>`;
+        return `<div class="form">
+                    <form action="/auth/${address}" method="POST">
+                        <a href="..\\` + address + `" class="mdc-button mdc-top-app-bar__action-item ` + currentClass + `">
+                            <span class="mdc-button__ripple"></span>
+                            <button class="mdc-button__label">` + name + `</button>
+                        </a>
+                    </form>
+                </div>`;
     }
 
     function isThisPageOpen(page){

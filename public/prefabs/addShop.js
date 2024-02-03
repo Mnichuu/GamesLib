@@ -1,26 +1,24 @@
 const PrefabAddNews = (function() {
     return {
-        addShopElement
+        addNews
     };
 
-    function addShopElement(container, gamesData) {
+    function addNews(container, gamesData) {
         if (!container) {
             console.error('Invalid arguments');
             return;
         }
 
         gamesData.forEach(gameData => {
-                if(gameData.zweryfikowane == 1) {
-                    container.innerHTML += generateGameBlock(gameData);
-                }
+                container.innerHTML += generateGameBlock(gameData);
         });
     }
 
     function generateGameBlock(gameData) {
         return `
-           <div class="game-block" onclick="">
+           <div class="game-block">
                 <p>
-                    <strong>${gameData.gameName}</strong>
+                    <strong>${gameData.name}</strong>
                 </p>
             </div>
         `;
