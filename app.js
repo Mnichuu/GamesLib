@@ -23,7 +23,7 @@ app.post("/auth/register", async (req, res) => {
     const result = await register.registerUser(name, email, password, password_confirm);
     
     if(result.status === 200) {
-        res.redirect("/auth/login");
+        res.redirect("/");
     }
 });
 

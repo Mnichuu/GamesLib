@@ -1,12 +1,11 @@
 const {createConnection} = require('mysql');
-const bcrypt = require("bcryptjs");
 
 const db = createConnection({
     host: "localhost",
     port: "3306",
     user: "root",
     password: "root",
-    database: "gameslib"
+    database: "stream"
 });
 
 function queryAsync(query, values) {
