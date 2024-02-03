@@ -65,14 +65,14 @@ const PrefabHeader = (function(){
         if (userType == User.WERYFIKATOR) {
             return generatePageElement("Weryfikacje", "verification");
         } else if (userType == User.UZYTKOWNIK_ZALOGOWANY) {
-            return generatePageElement("Nowości", "news")
+            return generatePageElement("Sklep", "news")
                 + generatePageElement("Twoje Gry", "yourGames")
                 + generatePageElement("Profil", "profile");
         } else if (userType == User.TWORCA){
-            return generatePageElement("Nowości", "news")
+            return generatePageElement("Sklep", "news")
                 + generatePageElement("Profil", "profile");
         } else {
-             return generatePageElement("Nowości", "news");
+             return generatePageElement("Sklep", "news");
          }
     }
 

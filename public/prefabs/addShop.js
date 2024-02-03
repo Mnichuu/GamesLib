@@ -1,9 +1,9 @@
-const PrefabAddGames = (function() {
+const PrefabAddNews = (function() {
     return {
-        addGames
+        addShopElement
     };
 
-    function addGames(container, gamesData) {
+    function addShopElement(container, gamesData) {
         if (!container) {
             console.error('Invalid arguments');
             return;
