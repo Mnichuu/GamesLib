@@ -10,32 +10,29 @@ const PrefabHeader = (function(){
     function get(){
         document.write(
             `<header class="mdc-top-app-bar">
-                    <div class="mdc-top-app-bar__row">
-                        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <div class="mdc-top-app-bar__row" style >
+                        <section_header class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                             <a href="" class="mdc-button mdc-top-app-bar__action-item">
-                                <span class="mdc-button__ripple"></span>
-                                <span class="mdc-button__label">Pomoc</span>
+                                <header class="mdc-button__ripple"></header>
+                                <header class="mdc-button__label">Pomoc</header>
                             </a>
-                        </section>
-                        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">`
+                        </section_header>
+                        <section_header class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">`
                             + generateLogginLoggoutFunction()
-                        + `</section>
+                        + `</section_header>
                     </div>
                     <div class="mdc-top-app-bar__row">
-                        <section class="mdc-top-app-bar__section">
+                        <section_header class="mdc-top-app-bar__section">
                             <hr>
-                        </section>
+                        </section_header>
                     </div>
                     <div class="mdc-top-app-bar__row">
-                        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">`
+                        <section_header class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">`
                             + generatePages()
-                        + `</section>
-                        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                            <button class="mdc-icon-button material-icons mdc-top-app-bar__action-item">
-                                <div class="ripple-above-button-image mdc-icon-button__ripple"></div>
-                                search
-                            </button>
-                        </section>
+                        + `</section_header>
+                        <section_header class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                            
+                        </section_header>
                     </div>
                 </header>`);
     }
@@ -43,19 +40,19 @@ const PrefabHeader = (function(){
     function generateLogginLoggoutFunction(){
         if(isThisPageOpen("loggin")) {
             return `<a href="..\\registration" class="mdc-button mdc-top-app-bar__action-item">
-                        <span class="mdc-button__ripple"></span>
-                        <span class="mdc-button__label">Zarejestruj się</span>
+                        <header class="mdc-button__ripple"></header>
+                        <header class="mdc-button__label">Zarejestruj się</header>
                     </a>`;
         }
         if(User.isLogged()){
             return `<a onclick="User.logOut()" class="mdc-button mdc-top-app-bar__action-item">
-                        <span class="mdc-button__ripple"></span>
-                        <span class="mdc-button__label">Wyloguj się</span>
+                        <header class="mdc-button__ripple"></header>
+                        <header class="mdc-button__label">Wyloguj się</header>
                     </a>`;
         } else {
             return `<a href="..\\loggin" class="mdc-button mdc-top-app-bar__action-item">
-                        <span class="mdc-button__ripple"></span>
-                        <span class="mdc-button__label">Zaloguj się</span>
+                        <header class="mdc-button__ripple"></header>
+                        <header class="mdc-button__label">Zaloguj się</header>
                     </a>`;
         }
     }
@@ -79,8 +76,8 @@ const PrefabHeader = (function(){
     function generatePageElement(name, address){
         const currentClass = isThisPageOpen(address) ? CURRENT_PAGE_CLASS : '';
         return `<a href="..\\` + address + `" class="mdc-button mdc-top-app-bar__action-item ` + currentClass + `">
-                    <span class="mdc-button__ripple"></span>
-                    <span class="mdc-button__label">` + name + `</span>
+                    <header class="mdc-button__ripple"></header>
+                    <header class="mdc-button__label">` + name + `</header>
                 </a>`;
     }
 
