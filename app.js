@@ -2,6 +2,7 @@ const express = require('express');
 const path = require("path");
 const register = require('./controller/register');
 const login = require('./controller/login');
+const shop = require('./controller/shop');
 const dotenv = require('dotenv');
 
 const app = express();
@@ -35,6 +36,14 @@ app.post("/auth/login", async (req, res) => {
             res.cookie(cookie.name, cookie.value, cookie.options);
         });
         res.redirect("/");
+    }
+});
+
+app.post("views/news", async (req, res) => {
+    const result = await shop.getAllGames();
+
+    if (result.status === 200) {
+        console.log(result.message);
     }
 });
 
