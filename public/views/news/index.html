@@ -17,8 +17,9 @@
         <link rel="stylesheet" href="../../styles/game-block.css">
 
         <script src="../../prefabs/headers.js"></script>
+        <script src="../../prefabs/addShop.js"></script>
         <script src="../../code/user.js"></script>
-        <script src="../../code/shop_values.js"></script>
+        <script src="../../code/page_news.js"></script>
     </head>
     <body>
         <script>
@@ -27,7 +28,7 @@
         <main>
             <div id="yourGamesContainer"></div>
             <script>
-                PrefabAddGames.addGames(document.getElementById('yourGamesContainer'), gamesData);
+                PrefabAddNews.addNews(document.getElementById('yourGamesContainer'), gamesData);
             </script>
         </main>
         </body>
