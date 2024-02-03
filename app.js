@@ -18,12 +18,13 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+
 app.post("/auth/register", async (req, res) => {
     const { name, email, password, password_confirm } = req.body;
     const result = await register.registerUser(name, email, password, password_confirm);
     
     if(result.status === 200) {
-        res.redirect("/auth/login");
+        res.redirect("/");
     }
 });
 
