@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    min-height: 100vh;
+    background: #525252;
+}
+
+.signin
+{
+    position: absolute;
+    margin-top: 12%;
+    width: 400px;
+    background: #222;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,9);
+}
+.signin .content
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+.signin .content h2
+{
+    font-size: 2em;
+    color: #4BA36FFF;
+    text-transform: uppercase;
+}
+
+.signin .content .form .inputBox
+{
+    position: relative;
+    width: 100%;
+}
+.signin .content .form .inputBox input
+{
+    position: relative;
+    width: 100%;
+    background: #333;
+    border: none;
+    outline: none;
+    padding: 13px   5px ;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.3em;
+}
+.signin .content .form .inputBox i
+{
+    position: absolute;
+    left: 0;
+    padding: 15px 10px;
+    font-style: normal;
+    color: #aaa;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.signin .content .form .inputBox input:focus ~ i,
+.signin .content .form .inputBox input:valid ~ i
+{
+    transform: translateY(-7.5px);
+    font-size: 0.8em;
+    color: #fff;
+}
+
+input[type="submit"]:active
+{
+    opacity: 0.6;
+}
+
+.signin .form-label
+{
+    font-size: 1.5em;
+}
+.signin .content .form .inputBox
+{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px; /* Adjust the margin-bottom as needed */
+}
+
+.btn-primary {
+    margin-top: 5px; /* Add margin to the top of the button */
+    background-color: #e0e2e1;
+    color: #363636;
+    padding: 8px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #4BA36FFF;
+}

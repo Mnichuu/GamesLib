@@ -17,35 +17,36 @@
         <link rel="stylesheet" href="../../styles/input-fields.css">
         <link rel="stylesheet" href="../../styles/buttons.css">
         <link rel="stylesheet" href="../../styles/texts.css">
+        <link rel="stylesheet" href="../../styles/login_register.css">
 
         <script src="../../code/user.js"></script>
         <script src="../../code/user.php"></script>
         <script src="../../code/user_db.js"></script>
         <script src="../../prefabs/headers.js"></script>
+
     </head>
     <body>
         <script>
             PrefabHeader.get();
         </script>
-        <main class="mdc-top-app-bar--fixed-adjust">
-            <div class="container mt-4">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">Register Form</div>
-                    <div class="card-body">
-                        <form action="/auth/register" method="POST">
-                            <div class="mb-3">
+        <div class="signin">
+        <div class="content">
+            <h2>Register</h2>
+            <div class="form">
+                <form action="/auth/register" method="POST">
+                            <div class="inputBox">
                                 <label for="name-reg" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name-reg" name="name">
                             </div>
-                            <div class="mb-3">
+                            <div class="inputBox">
                                 <label for="email-reg" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="email-reg" name="email">
                             </div>
-                            <div class="mb-3">
+                            <div class="inputBox">
                                 <label for="password-reg" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password-reg" name="password">
                             </div>
-                            <div class="mb-3">
+                            <div class="inputBox">
                                 <label for="password-conf-reg" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control" id="password-conf-reg" name="password_confirm">
                             </div>
@@ -54,8 +55,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </main>
+        </div>
     </body>
     <script src="../../code/base.js"></script>
     <script>
