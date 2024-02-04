@@ -3,6 +3,7 @@ const path = require("path");
 const register = require('./controller/register');
 const login = require('./controller/login');
 const db2array = require('./controller/db2array');
+const admin = require('./controller/admin');
 const dotenv = require('dotenv');
 
 const app = express();
@@ -58,6 +59,12 @@ app.post("/auth/profile", async (req, res) => {
     const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });
+app.post("/add-game", async (req, res) => {
+    const { name } = req.body;
+    const result = await admin.addGame2Mysql(name);
+    res.redirect("/views/admin");
+});
+
 app.listen(5000, () => {
     console.log("server started on port 5000");
 });
