@@ -27,17 +27,45 @@ const PrefabGenerateUser = (function () {
         const imageFile = `../../values/images/avatar0.png`;
 
         return `
-            <div class="user-profile-block">
-                <div class="username">${username}</div>
-                <div class="user-actions">
-                    <button class="edit-button">Edytuj</button>
-                </div>
-                <div class="user-info">
-                    <div class="user-image">
-                        <img src="${imageFile}" alt="Profilowe" />
-                    </div>
-                </div>
-            </div>
+ <div class="card">
+          <div class="left-containers">
+              <div class="left-container_1">
+                <h2 class="gradienttext">John Doe</h2>
+                <p>Web Developer</p>
+              </div>
+              <div class="left-container_2">
+                <h2 class="gradienttext">John Doe</h2>
+                <p>Web Developer</p>
+              </div>
+          </div>
+      <div class="right-container">
+        <h3 class="gradienttext">Profile Details</h3>
+        <table>
+        
+              <tr>
+                    <td>Name :</td>
+                    <td>John Doe</td>
+              </tr>
+              <tr>
+                    <td>Age :</td>
+                    <td>35</td>
+              </tr>
+              <tr>
+                    <td>Mobile :</td>
+                    <td>+91 XXXXXXXXXX</td>
+              </tr>
+              <tr>
+                    <td>Email :</td>
+                    <td>john@example.com</td>
+              </tr>
+              <tr>
+                    <td>Address :</td>
+                    <td>123 Main St, Anytown, USA</td>
+              </tr>
+        </table>
+      </div>
+</div>
+
         `;
     }
 
@@ -59,20 +87,4 @@ const PrefabGenerateUser = (function () {
         }
     }
 
-    function updateUsername(newUsername, userId) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '../../values/db/UsernameToDBController.php', true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-        const params = 'username=' + encodeURIComponent(newUsername) + '&user_id=' + encodeURIComponent(userId);
-        console.log(params);
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.responseText);
-            }
-        };
-
-        xhr.send(params);
-    }
 })();
