@@ -5,7 +5,6 @@ async function DB2Array (query, values, fileName) {
     try {
         const result = await queryAsync(query, values);
 
-        console.log(result);
         if (result.length === 0) {
             return { status: 403, message: 'No values in that table.' };
         }
@@ -18,7 +17,6 @@ async function DB2Array (query, values, fileName) {
             }
         }
 
-        console.log(gamesData);
         let jsonData = JSON.stringify(gamesData, null, 2);
         fs.writeFileSync("public/code/" + fileName, `const gamesData = ${jsonData};`);
 
