@@ -21,6 +21,7 @@ Myślę, że warto zostawić 4 aktorów:
 4. Dodanie możliwości dodawania do 'Biblioteki gier' gier z nowości.
 5. Dodanie jakichś opisów może do tych gier w bibliotece.
 6. Dodanie rejestracji (jak nam się będzie chciało)
+7. Zapobieganie dodaniu dwóch gier o takich samych nazwach!
 
 
 # Jak widzę ten projekt?

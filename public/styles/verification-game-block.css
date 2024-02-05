@@ -1,0 +1,59 @@
+.verification-game-block {
+    display: flex;
+    flex-direction: column; /* Kierunek rozmieszczenia elementów - pionowy */
+    justify-content: center; /* Rozmieszczenie równomierne wzdłuż osi pionowej */
+    align-items: center; /* Wyśrodkowanie wzdłuż osi poziomej */
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 20px auto;
+    border: 3px solid #cccbcb88;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 50%; /* Szerokość 100% dostosowuje bloki do dostępnego miejsca */
+    transition: background-color 0.3s; /* Animacja zmiany koloru tła */
+}
+
+/* Dodatkowe style wyglądu tekstu w blokach */
+.verification-game-block p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Lekki odstęp na górze pierwszego prostokąta */
+.verification-game-block:first-child {
+    margin-top: 30px;
+}
+
+/* Stylowanie po najechaniu */
+.verification-game-block:hover {
+    border: 3px solid #354935;
+    box-shadow: 0 5px 4px rgba(110, 235, 162, 0.7);
+}
+
+details {
+    color: #666565;
+    margin-top: 10px;
+}
+
+summary:hover {
+    cursor: pointer;
+}
+
+.add-to-library {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+button.add-to-library-btn {
+    color: #37f17fa6;
+    font-weight: 600;
+    background-color: #3e4e33a6;
+    border-radius: 0.5em;
+}
+
+button.add-to-library-btn:hover {
+    background-color: #3e4e33;
+    border-radius: 0.5em;
+    cursor:pointer;
+}
