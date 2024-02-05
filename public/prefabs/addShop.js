@@ -31,12 +31,12 @@ const PrefabAddNews = (function() {
 
         let text = 'Add to Library';
         let action = "/add-game-library";
-        if (gamesData.isDownloaded === true || gamesData === false) {
-            text = 'Add to Library';
-            action = "/add-game-library";
-        } else {
+        if (gamesData.isDownloaded == true || gamesData == false) {
             text = 'In Library';
             action = "/auth/yourGames";
+        } else {
+            text = 'Add to Library';
+            action = "/add-game-library";
         }
 
         return `
