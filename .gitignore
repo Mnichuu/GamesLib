@@ -1,3 +1,7 @@
 node_modules/
 package-lock.json
 package.json
+public/code/page_yourGames.js
+public/code/page_profile.js
+public/code/page_news.js
+public/code/page_verification.js
