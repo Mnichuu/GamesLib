@@ -6,7 +6,7 @@
     background-color: #f0f0f0;
     padding: 20px;
     margin: 20px auto;
-    border: 1px solid #ccc;
+    border: 3px solid #cccbcb88;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     width: 50%; /* Szerokość 100% dostosowuje bloki do dostępnego miejsca */
@@ -27,8 +27,8 @@
 
 /* Stylowanie po najechaniu */
 .game-block:hover {
-    background-color: #b1afaf; /* Kolor podświetlenia po najechaniu */
-    cursor: pointer; /* Zmiana kursora na wskaźnik, aby pokazać interaktywność */
+    border: 3px solid #141414;
+    box-shadow: 0 5px 4px rgba(255, 255, 255, 0.7);
 }
 
 details {
@@ -36,9 +36,8 @@ details {
     margin-top: 10px;
 }
 
-details[open] summary {
-    color: #666565;
-    margin-right: 0px;
+summary:hover {
+    cursor: pointer;
 }
 
 .add-to-library {
@@ -51,4 +50,10 @@ button.add-to-library-btn {
     font-weight: 600;
     background-color: #3e4e33a6;
     border-radius: 0.5em;
+}
+
+button.add-to-library-btn:hover {
+    background-color: #3e4e33;
+    border-radius: 0.5em;
+    cursor:pointer;
 }
