@@ -53,3 +53,76 @@ header .mdc-top-app-bar__row:nth-child(3) .mdc-top-app-bar__section .mdc-button 
 .current-page-action-item { /* elementy, kursor na */
     color: var(--color-accent-second) !important;
 }
+
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
+form{
+    margin-bottom: 6px;
+}
+
+button.mdc-button__label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 0.6em; 
+    font-family: inherit;
+
+    &.mdc-button__label {
+        font-weight: 600;
+        color: #ffffff;
+        text-transform: uppercase;
+        padding: 0.5em 1em; /* Dostosowano padding */
+        background: #444;
+        border: 2px solid #777;
+        border-radius: 0.6em; /* Dostosowano border-radius */
+        height: 40px; /* Ustawiono wysokość 60px */
+        width: auto; /* Dostosowano szerokość do treści */
+        transform-style: preserve-3d;
+        transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+
+        &::before {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #666;
+            border-radius: inherit;
+            box-shadow: 0 0 0 2px #444, 0 0.1875em 0 0 #888; /* Dostosowano box-shadow */
+            transform: translate3d(0, 0.1875em, -1em); /* Dostosowano transform */
+            transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+        }
+
+        &:hover {
+            background: #555;
+            color: #4ba36f;
+            transform: translate(0, 0.0625em); /* Dostosowano wartość transform */
+            &::before {
+                box-shadow: 0 0 0 2px #444, 0 0.125em 0 0 #888; /* Dostosowano box-shadow */
+                transform: translate3d(0, 0.125em, -1em); /* Dostosowano transform */
+            }
+        }
+
+        &:active {
+            background: #6200ee;
+            transform: translate(0em, 0.1875em); /* Dostosowano wartość transform */
+            &::before {
+                box-shadow: 0 0 0 2px #444, 0 0 #888; /* Dostosowano box-shadow */
+                transform: translate3d(0, 0, -1em); /* Dostosowano transform */
+            }
+        }
+    }
+}
