@@ -31,7 +31,7 @@ const PrefabAddNews = (function() {
 
         let text = 'Add to Library';
         let action = "/add-game-library";
-        if (gamesData.isDownloaded === true || gamesData === false) {
+        if (gameData.isDownloaded == null) {
             text = 'Add to Library';
             action = "/add-game-library";
         } else {
