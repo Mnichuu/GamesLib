@@ -89,10 +89,12 @@ const PrefabHeader = (function(){
 
     function generatePageElement(name, address){
         const currentClass = isThisPageOpen(address) ? CURRENT_PAGE_CLASS : '';
-        return `<a href="..\\` + address + `" class="mdc-button mdc-top-app-bar__action-item ` + currentClass + `">
-                    <header class="mdc-button__ripple"></header>
-                    <button class="mdc-button__label">` + name + `</button>
-                </a>`;
+        return `<div class="addGame">
+                    <a href="..\\` + address + `" class="mdc-button mdc-top-app-bar__action-item ` + currentClass + `">
+                        <header class="mdc-button__ripple"></header>
+                        <button class="mdc-button__label">` + name + `</button>
+                    </a>
+                </div>`;
     }
 
     function isThisPageOpen(page){
