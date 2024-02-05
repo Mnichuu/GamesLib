@@ -45,7 +45,18 @@ app.post("/auth/login", async (req, res) => {
 });
 
 app.post("/auth/news", async (req, res) => {
-    const result = db2array.DB2Array("SELECT * FROM games WHERE verified = '1'", '', "page_news.js");
+    const userID = req.headers.cookie.split('; ')
+        .find(row => row.startsWith('userId='))
+        .split('=')[1];
+    
+    const result = db2array.DB2Array(
+        `SELECT games.gameID, games.name, games.description, library.isDownloaded 
+        FROM games
+        LEFT JOIN library ON games.gameID = library = library.gameID
+                        AND library.userID = ? 
+        WHERE verified = ?`, 
+        [userID,1], "page_news.js");
+
     res.redirect("/views/news");
 });
 
@@ -53,9 +64,13 @@ app.post("/auth/yourGames", async (req, res) => {
     const userID = req.headers.cookie.split('; ')
         .find(row => row.startsWith('userId='))
         .split('=')[1];
-    const result = db2array.DB2Array(`SELECT * FROM library 
+    
+    const result = db2array.DB2Array(
+        `SELECT * FROM library 
         JOIN games ON library.gameID = games.gameID 
-        WHERE userID=?`, userID, "page_yourGames.js");
+        WHERE userID=?`, 
+        userID, "page_yourGames.js");
+
     res.redirect("/views/yourGames");
 });
 
