@@ -10,16 +10,37 @@ const PrefabAddNews = (function() {
         }
 
         gamesData.forEach(gameData => {
-                container.innerHTML += generateGameBlock(gameData);
+                container.innerHTML += generateGameBlock(gameData, User.isLogged());
         });
     }
 
-    function generateGameBlock(gameData) {
+    function generateGameBlock(gameData, isLoggedIn) {
+        if(!isLoggedIn) {
+            return `
+            <div class="game-block">
+                    <p>
+                        <strong>${gameData.name}</strong>
+                    </p>
+                    <details>
+                        <summary>Toggle Description</summary>
+                        <p>${gameData.description}</p>
+                    </details>
+                </div>
+            `;
+        }
+
         return `
            <div class="game-block">
                 <p>
                     <strong>${gameData.name}</strong>
                 </p>
+                <details>
+                    <summary>Toggle Description</summary>
+                    <p>${gameData.description}</p>
+                </details>
+                <button class="add-to-library-btn" data-gameid="${gameData.gameID}" data-isdownloaded="${gameData.isDownloaded}">
+                    Add to Library
+                </button>
             </div>
         `;
     }
