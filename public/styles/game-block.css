@@ -30,3 +30,25 @@
     background-color: #b1afaf; /* Kolor podświetlenia po najechaniu */
     cursor: pointer; /* Zmiana kursora na wskaźnik, aby pokazać interaktywność */
 }
+
+details {
+    color: #666565;
+    margin-top: 10px;
+}
+
+details[open] summary {
+    color: #666565;
+    margin-right: 0px;
+}
+
+.add-to-library {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+button.add-to-library-btn {
+    color: #37f17fa6;
+    font-weight: 600;
+    background-color: #3e4e33a6;
+    border-radius: 0.5em;
+}
