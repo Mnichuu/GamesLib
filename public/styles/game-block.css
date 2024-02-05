@@ -27,8 +27,8 @@
 
 /* Stylowanie po najechaniu */
 .game-block:hover {
-    border: 3px solid #141414;
-    box-shadow: 0 5px 4px rgba(255, 255, 255, 0.7);
+    border: 3px solid #354935;
+    box-shadow: 0 5px 4px rgba(110, 235, 162, 0.7);
 }
 
 details {
