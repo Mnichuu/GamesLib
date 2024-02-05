@@ -1,1 +1,12 @@
-const gamesData = [{"ID":"1","tworcaID":"101","gameName":"Indianin Jon - Przygoda","zweryfikowane":"1"},{"ID":"2","tworcaID":"102","gameName":"Kangurek Koa 2","zweryfikowane":"1"},{"ID":"3","tworcaID":"102","gameName":"Monter Hunter","zweryfikowane":"1"},{"ID":"4","tworcaID":"103","gameName":"XD LEGO","zweryfikowane":"1"},{"ID":"5","tworcaID":"123","gameName":"elemele","zweryfikowane":"1"},{"ID":"6","tworcaID":"21","gameName":"XD beka","zweryfikowane":"1"}];
+const gamesData = [
+  {
+    "gameID": 1,
+    "name": "Game 1",
+    "verified": 1
+  },
+  {
+    "gameID": 2,
+    "name": "Game 2",
+    "verified": 1
+  }
+];

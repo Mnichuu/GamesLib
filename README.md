@@ -36,3 +36,10 @@ I wtedy dopiero zwykli użytkownicy mogą dodawać gry do biblioteki, może będ
 Jest taka aplikacja do seriali, że się podaje seriale które się oglądało i oblicza czas jaki się przed ekranem spędziło. to mogłoby być dobre.
 W każdym razie i tak musimy najpierw zająć się node.js i express.js, oglądnąć jakieś filmiki o tym, czy coś.
 żebyśmy oboje wiedzieli jak z tego korzystać i jak to działa.
+
+# Rzeczy zrobione
+
+1. Logowanie
+2. Rejestracja
+3. Hashowanie
+4. Cookies użytkowników

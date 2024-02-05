@@ -8,9 +8,9 @@ const PageMain = (function(){
     function openDefaultPage(){
         const userType = User.getTypeOfLoggedUser();
         if(userType == User.WERYFIKATOR) {
-            window.open("../views/news", "_self");
+            window.open("../views/news/", "_self");
         } else {
-            window.open("../views/news", "_self"); //TODO: mają byc nowowści
+            window.open("../views/news/", "_self");
         }
     }
 

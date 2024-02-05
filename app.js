@@ -2,7 +2,7 @@ const express = require('express');
 const path = require("path");
 const register = require('./controller/register');
 const login = require('./controller/login');
-const shop = require('./controller/shop');
+const db2array = require('./controller/db2array');
 const dotenv = require('dotenv');
 
 const app = express();
@@ -24,6 +24,8 @@ app.post("/auth/register", async (req, res) => {
     
     if(result.status === 200) {
         res.redirect("/");
+    } else {
+        res.redirect("/views/registration");
     }
 });
 
@@ -36,17 +38,26 @@ app.post("/auth/login", async (req, res) => {
             res.cookie(cookie.name, cookie.value, cookie.options);
         });
         res.redirect("/");
+    } else {
+        res.redirect("/views/loggin");
     }
 });
 
-app.post("views/news", async (req, res) => {
-    const result = await shop.getAllGames();
-
-    if (result.status === 200) {
-        console.log(result.message);
-    }
+app.post("/auth/news", async (req, res) => {
+    const result = db2array.DB2Array("SELECT * FROM games WHERE verified = '1'", '', "page_news.js");
+    res.redirect("/views/news");
 });
 
+app.post("/auth/yourGames", async (req, res) => {
+    const result = db2array.DB2Array("SELECT * FROM library JOIN games ON library.gameID = games.gameID", '', "page_yourGames.js");
+    res.redirect("/views/yourGames");
+});
+
+// TODO: dodanie osobnego pliku z tablicą i inne query dla profilu
+app.post("/auth/profile", async (req, res) => {
+    const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
+    res.redirect("/views/profile");
+});
 app.listen(5000, () => {
     console.log("server started on port 5000");
 });
