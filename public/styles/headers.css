@@ -66,6 +66,10 @@ form{
     margin-bottom: 6px;
 }
 
+.addGame {
+    margin-top: -6px;
+}
+
 button.mdc-button__label {
     position: relative;
     display: inline-block;
