@@ -29,6 +29,16 @@ const PrefabAddNews = (function() {
             `;
         }
 
+        let text = 'Add to Library';
+        let action = "/add-game-library";
+        if (gamesData.isDownloaded === true || gamesData === false) {
+            text = 'Add to Library';
+            action = "/add-game-library";
+        } else {
+            text = 'In Library';
+            action = "/auth/yourGames";
+        }
+
         return `
            <div class="game-block">
                 <p>
@@ -36,12 +46,12 @@ const PrefabAddNews = (function() {
                 </p>
                 <details>
                     <summary>Toggle Description</summary>
-                    <p>${gameData.description}</p>
+                    <div>${gameData.description}</div>
                 </details>
-                <form class="add-to-library" action="/add-game-library" method="POST">
+                <form class="add-to-library" action="${action}" method="POST">
                     <input type="hidden" name="gameID" value="${gameData.gameID}">
                     <button class="add-to-library-btn" data-gameid="${gameData.gameID}" data-isdownloaded="${gameData.isDownloaded}">
-                        Add to Library
+                        ${text}
                     </button>
                 </form>
             </div>
