@@ -52,9 +52,9 @@ app.post("/auth/news", async (req, res) => {
     const result = db2array.DB2Array(
         `SELECT games.gameID, games.name, games.description, library.isDownloaded 
         FROM games
-        LEFT JOIN library ON games.gameID = library = library.gameID
+        LEFT JOIN library ON games.gameID = library.gameID
                         AND library.userID = ? 
-        WHERE verified = ?`, 
+        WHERE verified = ?;`, 
         [userID,1], "page_news.js");
 
     res.redirect("/views/news");
