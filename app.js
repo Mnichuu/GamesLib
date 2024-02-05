@@ -4,6 +4,7 @@ const register = require('./controller/register');
 const login = require('./controller/login');
 const db2array = require('./controller/db2array');
 const admin = require('./controller/admin');
+const addToLibrary = require('./controller/addGameToLibrary');
 const dotenv = require('dotenv');
 
 const app = express();
@@ -48,7 +49,7 @@ app.post("/auth/news", async (req, res) => {
     const cookieHeader = req.headers.cookie;
 
     if(!cookieHeader || !cookieHeader.includes('userId=')) {
-        const result = db2array.DB2Array(`SELECT * FROM games WHERE verified=?;`, [1], "page_news.js");
+        db2array.DB2Array(`SELECT * FROM games WHERE verified=?;`, [1], "page_news.js");
         res.redirect("/views/news");
     }
 
@@ -56,7 +57,7 @@ app.post("/auth/news", async (req, res) => {
         .find(row => row.startsWith('userId='))
         .split('=')[1];
     
-    const result = db2array.DB2Array(`
+    db2array.DB2Array(`
         SELECT games.gameID, games.name, games.description, library.isDownloaded 
         FROM games
         LEFT JOIN library ON games.gameID = library.gameID
@@ -72,7 +73,7 @@ app.post("/auth/yourGames", async (req, res) => {
         .find(row => row.startsWith('userId='))
         .split('=')[1];
     
-    const result = db2array.DB2Array(`
+    db2array.DB2Array(`
         SELECT * FROM library 
         JOIN games ON library.gameID = games.gameID 
         WHERE userID=?`, 
@@ -90,6 +91,15 @@ app.post("/add-game", async (req, res) => {
     const { name } = req.body;
     const result = await admin.addGame2Mysql(name);
     res.redirect("/views/admin");
+});
+
+app.post("/add-game-library", async (req, res) => {
+    const { gameID } = req.body;
+    const userID = req.headers.cookie.split('; ')
+        .find(row => row.startsWith('userId='))
+        .split('=')[1];
+    await addToLibrary.addGameToLibrary(gameID, userID);
+    res.redirect("/views/news");
 });
 
 app.listen(5000, () => {
