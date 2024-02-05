@@ -22,7 +22,7 @@
 
 /* Lekki odstęp na górze pierwszego prostokąta */
 .game-block:first-child {
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 /* Stylowanie po najechaniu */
