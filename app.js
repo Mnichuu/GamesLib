@@ -51,6 +51,7 @@ app.post("/auth/news", async (req, res) => {
     if(!cookieHeader || !cookieHeader.includes('userId=')) {
         db2array.DB2Array(`SELECT * FROM games WHERE verified=?;`, [1], "page_news.js");
         res.redirect("/views/news");
+        return;
     }
 
     const userID = req.headers.cookie.split('; ')
