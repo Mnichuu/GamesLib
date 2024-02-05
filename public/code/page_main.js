@@ -8,7 +8,7 @@ const PageMain = (function(){
     function openDefaultPage(){
         const userType = User.getTypeOfLoggedUser();
         if(userType == User.WERYFIKATOR) {
-            window.open("../views/news/", "_self");
+            window.open("../views/verification/", "_self");
         } else {
             window.open("../views/news/", "_self");
         }

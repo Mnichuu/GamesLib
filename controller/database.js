@@ -5,7 +5,7 @@ const db = createConnection({
     port: "3306",
     user: "root",
     password: "root",
-    database: "stream"
+    database: "gameslib"
 });
 
 function queryAsync(query, values) {

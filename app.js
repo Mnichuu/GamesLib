@@ -5,6 +5,7 @@ const login = require('./controller/login');
 const db2array = require('./controller/db2array');
 const admin = require('./controller/admin');
 const addToLibrary = require('./controller/addGameToLibrary');
+const verifyGame = require('./controller/verifyGame');
 const dotenv = require('dotenv');
 
 const app = express();
@@ -88,9 +89,14 @@ app.post("/auth/profile", async (req, res) => {
     const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });
+
+app.post("/auth/verification", async (req, res) => {
+    const result = db2array.DB2Array("SELECT * FROM games WHERE verified = '0'", '', "page_verification.js");
+    res.redirect("/views/verification");
+});
 app.post("/add-game", async (req, res) => {
-    const { name } = req.body;
-    const result = await admin.addGame2Mysql(name);
+    const { name, description } = req.body;
+    const result = await admin.addGame2Mysql(name, description);
     res.redirect("/views/admin");
 });
 
@@ -101,6 +107,13 @@ app.post("/add-game-library", async (req, res) => {
         .split('=')[1];
     await addToLibrary.addGameToLibrary(gameID, userID);
     res.redirect("/views/news");
+});
+
+app.post("/verify-game", async (req, res) => {
+    const { name } = req.body;
+    const result = await verifyGame.verifyGame(name);
+    await db2array.DB2Array("SELECT * FROM games WHERE verified = '0'", '', "page_verification.js");
+    res.redirect("/views/verification");
 });
 
 app.listen(5000, () => {
