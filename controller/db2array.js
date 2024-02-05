@@ -6,6 +6,7 @@ async function DB2Array (query, values, fileName) {
         const result = await queryAsync(query, values);
 
         if (result.length === 0) {
+            fs.writeFileSync("public/code/" + fileName, '');
             return { status: 403, message: 'No values in that table.' };
         }
 
