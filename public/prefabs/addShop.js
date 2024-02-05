@@ -46,7 +46,7 @@ const PrefabAddNews = (function() {
                 </p>
                 <details>
                     <summary>Toggle Description</summary>
-                    <div>${gameData.description}</div>
+                    <p>${gameData.description}</p>
                 </details>
                 <form class="add-to-library" action="${action}" method="POST">
                     <input type="hidden" name="gameID" value="${gameData.gameID}">
