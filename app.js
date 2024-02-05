@@ -50,7 +50,12 @@ app.post("/auth/news", async (req, res) => {
 });
 
 app.post("/auth/yourGames", async (req, res) => {
-    const result = db2array.DB2Array("SELECT * FROM library JOIN games ON library.gameID = games.gameID", '', "page_yourGames.js");
+    const userID = req.headers.cookie.split('; ')
+        .find(row => row.startsWith('userId='))
+        .split('=')[1];
+    const result = db2array.DB2Array(`SELECT * FROM library 
+        JOIN games ON library.gameID = games.gameID 
+        WHERE userID=?`, userID, "page_yourGames.js");
     res.redirect("/views/yourGames");
 });
 
