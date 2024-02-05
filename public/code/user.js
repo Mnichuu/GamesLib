@@ -20,7 +20,8 @@ const User = (function(){
         getTypeOfLoggedUser,
         getUserId,
         tryLoggin,
-        logOut
+        logOut,
+        getUserType
     };
 
     //zwraca czy jest ktoś zalogowany
@@ -52,6 +53,10 @@ const User = (function(){
     //przed użyciem sprawdzić czy ktoś jest zalogowany [isLogged()]
     function getUserId(){
         return getUserIdFromCookies();
+    }
+
+    function getUserType(){
+        return getUserTypeFromCookies();
     }
 
     function tryLoggin(email, password) {
