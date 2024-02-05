@@ -25,6 +25,7 @@ Myślę, że warto zostawić 4 aktorów:
 8. Ujednolicenie bazy danych dla wszystkich.
 9. Profil
 10. CSS News i yourGames (game-block)
+11. Po naciśnięciu dodaj gre do biblioteki w sklepie przycisk musi się momentalnie zmienić
 
 
 # Jak widzę ten projekt?
