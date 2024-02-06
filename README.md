@@ -27,6 +27,7 @@ Myślę, że warto zostawić 4 aktorów:
 10. CSS News i yourGames (game-block) DONE
 11. Po naciśnięciu dodaj gre do biblioteki w sklepie przycisk musi się momentalnie zmienić DONE
 12. Wyświetlanie nazwy i klasy użytkownika obok przycisku WYLOGUJ SIĘ
+13. Rozwijany opis/zawijanie tekstu dla opisów (?)
 
 
 # Jak widzę ten projekt?
