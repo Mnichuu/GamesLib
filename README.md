@@ -26,6 +26,7 @@ Myślę, że warto zostawić 4 aktorów:
 9. Profil
 10. CSS News i yourGames (game-block) DONE
 11. Po naciśnięciu dodaj gre do biblioteki w sklepie przycisk musi się momentalnie zmienić DONE
+12. Wyświetlanie nazwy i klasy użytkownika obok przycisku WYLOGUJ SIĘ
 
 
 # Jak widzę ten projekt?
