@@ -30,7 +30,8 @@ async function loginUser(name, password) {
             userTypeID: user.userTypeID,
             cookies: [
                 { name: "userId", value: user.userID, options: { expires: d, path: '/' } },
-                { name: "userType", value: user.userTypeID, options: { expires: d, path: '/' } }
+                { name: "userType", value: user.userTypeID, options: { expires: d, path: '/' } },
+                { name: "userName", value: name, options: { expires: d, path: '/' } }
             ]
         };
     } catch (error) {
