@@ -1,29 +1,32 @@
+<<<<<<<<< Temporary merge branch 1
+=========
 const gamesData = [
   {
-    "ID": 334,
-    "userID": 14,
+    "ID": 1,
+    "userID": 10,
     "gameID": 1,
-    "isDownloaded": 0,
+    "isDownloaded": 1,
     "name": "Game 1",
     "verified": 1,
     "description": "description of the game 1"
   },
   {
-    "ID": 335,
-    "userID": 14,
+    "ID": 2,
+    "userID": 10,
     "gameID": 2,
-    "isDownloaded": 0,
+    "isDownloaded": 1,
     "name": "Game 2",
     "verified": 1,
     "description": "description of the game 2"
   },
   {
-    "ID": 336,
-    "userID": 14,
-    "gameID": 4,
+    "ID": 4,
+    "userID": 10,
+    "gameID": 3,
     "isDownloaded": 0,
-    "name": "twoja stara siada na butli od vanisha",
-    "verified": 1,
-    "description": null
+    "name": "Game 3",
+    "verified": 0,
+    "description": "description of the game 3"
   }
 ];
+>>>>>>>>> Temporary merge branch 2

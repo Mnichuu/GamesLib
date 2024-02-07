@@ -15,7 +15,7 @@ const PrefabAddNews = (function() {
     }
 
     function generateGameBlock(gameData, isLoggedIn) {
-        if(!isLoggedIn) {
+        if(!isLoggedIn || User.getUserType() == 2) {
             return `
             <div class="game-block">
                     <p>
