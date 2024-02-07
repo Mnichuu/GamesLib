@@ -70,6 +70,13 @@ form{
     margin-top: -6px;
 }
 
+.userType {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    color: var(--color-secondary);
+    margin-right: 5px;
+}
+
 button.mdc-button__label {
     position: relative;
     display: inline-block;
