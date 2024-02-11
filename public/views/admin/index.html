@@ -1,6 +1,6 @@
 <html lang="pl">
     <head>
-        <title>Stream • Logowanie</title>
+        <title>Stream • Dodaj Grę</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="../../images/logo128.png" type="image/png">
@@ -30,18 +30,17 @@
 
         <div class="signin">
             <div class="content">
-                <h2>Sign In</h2>
+                <h2>Dodaj Grę</h2>
                 <div class="form">
-                    <form action="/auth/login" method="POST">
+                    <form action="/add-game" method="POST">
                         <div class="inputBox">
-                            <label for="name-reg" class="form-label">Email</label>
+                            <label for="name-reg" class="form-label">Nazwa gry</label>
                             <input type="text" class="form-control" id="name-reg" name="name">
                         </div>
                         <div class="inputBox">
-                            <label for="password-reg" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password-reg" name="password">
+                            <label for="name-reg" class="form-label">Opis</label>
+                            <input type="text" class="form-control" id="name-reg" name="description">
                         </div>
-
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>

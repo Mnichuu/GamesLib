@@ -45,7 +45,9 @@ const PrefabHeader = (function(){
                     </a>`;
         }
         if(User.isLogged()){
-            return `<a onclick="User.logOut()" class="mdc-button mdc-top-app-bar__action-item">
+            return `<div class="userType">${User.getTypeOfLoggedUser()}</div>
+                    <p>|</p>
+                    <a onclick="User.logOut()" class="mdc-button mdc-top-app-bar__action-item">
                         <header class="mdc-button__ripple"></header>
                         <header class="mdc-button__label">Wyloguj się</header>
                     </a>`;
@@ -60,20 +62,21 @@ const PrefabHeader = (function(){
     function generatePages() {
         const userType = User.getTypeOfLoggedUser();
         if (userType == User.WERYFIKATOR) {
-            return generatePageElement("Weryfikacje", "verification");
+            return generatePageElementWithForm("Weryfikacje", "verification");
         } else if (userType == User.UZYTKOWNIK_ZALOGOWANY) {
-            return generatePageElement("Sklep", "news")
-                + generatePageElement("Twoje Gry", "yourGames")
-                + generatePageElement("Profil", "profile");
+            return generatePageElementWithForm("Sklep", "news")
+                + generatePageElementWithForm("Twoje Gry", "yourGames")
+                + generatePageElementWithForm(`${User.getUserName()}`, "profile");
         } else if (userType == User.TWORCA){
-            return generatePageElement("Sklep", "news")
-                + generatePageElement("Profil", "profile");
+            return generatePageElementWithForm("Sklep", "news")
+                + generatePageElement("Dodaj Grę", "admin")
+                + generatePageElementWithForm(`${User.getUserName()}`, "profile");
         } else {
-             return generatePageElement("Sklep", "news");
+             return generatePageElementWithForm("Sklep", "news");
          }
     }
 
-    function generatePageElement(name, address){
+    function generatePageElementWithForm(name, address){
         const currentClass = isThisPageOpen(address) ? CURRENT_PAGE_CLASS : '';
         return `<div class="form">
                     <form action="/auth/${address}" method="POST">
@@ -82,6 +85,17 @@ const PrefabHeader = (function(){
                             <button class="mdc-button__label">` + name + `</button>
                         </a>
                     </form>
+                </div>`;
+    }
+
+
+    function generatePageElement(name, address){
+        const currentClass = isThisPageOpen(address) ? CURRENT_PAGE_CLASS : '';
+        return `<div class="addGame">
+                    <a href="..\\` + address + `" class="mdc-button mdc-top-app-bar__action-item ` + currentClass + `">
+                        <header class="mdc-button__ripple"></header>
+                        <button class="mdc-button__label">` + name + `</button>
+                    </a>
                 </div>`;
     }
 

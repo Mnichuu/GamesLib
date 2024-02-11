@@ -1,13 +1,14 @@
 const User = (function(){
 
-    const UZYTKOWNIK_ZALOGOWANY = "UZ";
+    const UZYTKOWNIK_ZALOGOWANY = "USER";
     const UZYTKOWNIK_NIEZALOGOWANY = "UNZ";
-    const SOCIAL_MANAGER = "SM";
-    const TWORCA = "T";
-    const WERYFIKATOR = "W";
+    const SOCIAL_MANAGER = "ADMIN";
+    const TWORCA = "CREATOR";
+    const WERYFIKATOR = "VERIFIER";
 
     const COOKIE_NAME = "userId";
     const COOKIE2_NAME = "userType";
+    const COOKIE3_NAME = "userName";
 
     //metody, które będą dostępne publicznie
     return {
@@ -20,7 +21,9 @@ const User = (function(){
         getTypeOfLoggedUser,
         getUserId,
         tryLoggin,
-        logOut
+        logOut,
+        getUserType,
+        getUserName
     };
 
     //zwraca czy jest ktoś zalogowany
@@ -54,6 +57,14 @@ const User = (function(){
         return getUserIdFromCookies();
     }
 
+    function getUserType(){
+        return getUserTypeFromCookies();
+    }
+
+    function getUserName(){
+        return getUserNameFromCookies();
+    }
+
     function tryLoggin(email, password) {
         return new Promise((resolve, reject) => {
             const sql = 'SELECT * FROM user_credentials WHERE login = ? AND password = ?';
@@ -85,6 +96,10 @@ const User = (function(){
 
     function getUserTypeFromCookies(){
         return document.cookie.match('(^|;)\\s*' + COOKIE2_NAME + '\\s*=\\s*([^;]+)')?.pop() || '';
+    }
+
+    function getUserNameFromCookies(){
+        return document.cookie.match('(^|;)\\s*' + COOKIE3_NAME + '\\s*=\\s*([^;]+)')?.pop() || '';
     }
 
     function createUserIdCookie(id, userType, minutes){

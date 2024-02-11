@@ -1,7 +1,7 @@
-.game-block {
+.verification-game-block {
     display: flex;
     flex-direction: column; /* Kierunek rozmieszczenia elementów - pionowy */
-    justify-content: space-between; /* Rozmieszczenie równomierne wzdłuż osi pionowej */
+    justify-content: center; /* Rozmieszczenie równomierne wzdłuż osi pionowej */
     align-items: center; /* Wyśrodkowanie wzdłuż osi poziomej */
     background-color: #f0f0f0;
     padding: 20px;
@@ -14,19 +14,19 @@
 }
 
 /* Dodatkowe style wyglądu tekstu w blokach */
-.game-block p {
+.verification-game-block p {
     margin: 0;
     font-size: 16px;
     color: #333;
 }
 
 /* Lekki odstęp na górze pierwszego prostokąta */
-.game-block:first-child {
+.verification-game-block:first-child {
     margin-top: 30px;
 }
 
 /* Stylowanie po najechaniu */
-.game-block:hover {
+.verification-game-block:hover {
     border: 3px solid #354935;
     box-shadow: 0 5px 4px rgba(110, 235, 162, 0.7);
 }

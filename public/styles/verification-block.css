@@ -25,9 +25,9 @@
   float: right;
   width: 100px;
   height: 40px;
-  background-color: #6effca; /* Light green */
+  background-color: rgba(7, 166, 72, 0.65); /* Light green */
   color: black;
-  border: 2px solid #04AA6D; /* Green */
+  border: 2px solid #0a9364; /* Green */
   transition-duration: 0.4s;
   padding: 2px;
   margin: 2px auto;

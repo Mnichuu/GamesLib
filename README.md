@@ -16,11 +16,18 @@ Myślę, że warto zostawić 4 aktorów:
 # TODO
 
 1. Połączenie obecnego projektu z node.js i express.js (trzeba to rozkminić, żeby dalej pracować). Wywalenie tego php mówiąc w skrócie. DONE
-2. Zrobienie logiki do komunikacji klienta z serwerem callback.
-3. Dodanie strony "Tworzenie/dodawanie gier" dla twórcy.
-4. Dodanie możliwości dodawania do 'Biblioteki gier' gier z nowości.
-5. Dodanie jakichś opisów może do tych gier w bibliotece.
-6. Dodanie rejestracji (jak nam się będzie chciało)
+2. Zrobienie logiki do komunikacji klienta z serwerem callback. DONE
+3. Dodanie strony "Tworzenie/dodawanie gier" dla twórcy. DONE
+4. Dodanie możliwości dodawania do 'Biblioteki gier' gier z nowości. DONE
+5. Dodanie jakichś opisów może do tych gier w bibliotece. DONE
+6. Dodanie rejestracji (jak nam się będzie chciało). DONE 
+7. Zapobieganie dodaniu dwóch gier o takich samych nazwach jako twórca!
+8. Ujednolicenie bazy danych dla wszystkich.
+9. Profil
+10. CSS News i yourGames (game-block) DONE
+11. Po naciśnięciu dodaj gre do biblioteki w sklepie przycisk musi się momentalnie zmienić DONE
+12. Wyświetlanie nazwy i klasy użytkownika obok przycisku WYLOGUJ SIĘ
+13. Rozwijany opis/zawijanie tekstu dla opisów (?)
 
 
 # Jak widzę ten projekt?

@@ -1,67 +1,48 @@
 const PrefabVerificatorList = (function() {
     return {
-        addGames
+        addGames2Verification
     };
 
-    function addGames(container, gamesData) {
+    function addGames2Verification(container, gamesData) {
         if (!container || !Array.isArray(gamesData)) {
             console.error('Invalid arguments');
             return;
         }
 
             for (let i = 0; i < gamesData.length; i++) {
-                if(gamesData[i].zweryfikowane == 0) {
+                if(gamesData[i].verified == 0) {
                     container.innerHTML += generateGameBlock(gamesData[i], i);
                 }
 
 
             }
-
-
-        container.addEventListener('click', function (event) {
-            const targetButton = event.target.closest('.button1');
-
-            if (targetButton) {
-                const dataId = targetButton.dataset.id;
-                verifyGame(targetButton, dataId, gamesData[dataId].tworcaID, gamesData[dataId].gameName);
-
-            }
-        });
-
     }
 
     function generateGameBlock(gameData, i) {
         let num = i;
         return `
-           <div class="game-block">
-                <p>
-                    <strong>${gameData.gameName}</strong>
-                    <button type="button" class="button3">Szczegóły</button>
-                    <button type="button" class="button1" data-id="${num}">Zatwierdź</button>
-                </p>
-            </div>
+               <div class="verification-game-block">
+                    <div>
+                         <p>
+                            <strong>${gameData.name}</strong>
+                            <input type="hidden" name="name" value="${gameData.name}" >
+                            <details>
+                                <summary class="button3" class="add-to-library-btn">
+                                    Szczegóły
+                                </summary>
+                                <p>${gameData.description}</p>
+                            </details>
+                             <div class="form">
+                                <form action="/verify-game" method="POST">
+                                    <input type="hidden" name="name" value="${gameData.name}">
+                                    <button class="button1" class="add-to-library-btn" data-name="${gameData.name}" data-description="${gameData.description}">
+                                        Zatwierdź
+                                    </button>
+                                </form>
+                            </div>
+                        </p>
+                    </div>
+                </div>
             `;
     }
-
-    function verifyGame(button1, gID) {
-        gID = parseInt(gID) + 1;
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', '../../values/db/VerificationToDBController.php', true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-
-        const params = ('verifiedGameID=' + gID);
-        console.log(params);
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.responseText);
-            }
-        };
-
-        xhr.send(params);
-     }
-
-
-
 })();

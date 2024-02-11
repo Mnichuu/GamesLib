@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const { queryAsync } = require('./database');
+const { news2Array } = require('./db2array');
 
 async function loginUser(name, password) {
     try {
@@ -20,6 +21,8 @@ async function loginUser(name, password) {
 
         console.log('User logged in successfully');
 
+        news2Array(user.userID);
+
         const d = new Date();
         d.setTime(d.getTime() + (30 * 60 * 1000));
 
@@ -30,7 +33,8 @@ async function loginUser(name, password) {
             userTypeID: user.userTypeID,
             cookies: [
                 { name: "userId", value: user.userID, options: { expires: d, path: '/' } },
-                { name: "userType", value: user.userTypeID, options: { expires: d, path: '/' } }
+                { name: "userType", value: user.userTypeID, options: { expires: d, path: '/' } },
+                { name: "userName", value: name, options: { expires: d, path: '/' } }
             ]
         };
     } catch (error) {

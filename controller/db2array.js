@@ -5,8 +5,8 @@ async function DB2Array (query, values, fileName) {
     try {
         const result = await queryAsync(query, values);
 
-        console.log(result);
         if (result.length === 0) {
+            fs.writeFileSync("public/code/" + fileName, '');
             return { status: 403, message: 'No values in that table.' };
         }
 
@@ -18,7 +18,6 @@ async function DB2Array (query, values, fileName) {
             }
         }
 
-        console.log(gamesData);
         let jsonData = JSON.stringify(gamesData, null, 2);
         fs.writeFileSync("public/code/" + fileName, `const gamesData = ${jsonData};`);
 
@@ -28,4 +27,37 @@ async function DB2Array (query, values, fileName) {
         return { status: 500, message: 'Internal Server Error' };
     }
 }
-module.exports={DB2Array};
+
+function news2Array (userID) {
+    try {
+        DB2Array(`
+            SELECT games.gameID, games.name, games.description, library.isDownloaded 
+            FROM games
+            LEFT JOIN library ON games.gameID = library.gameID
+                            AND library.userID = ? 
+            WHERE verified = ?;`, 
+            [userID,1], "page_news.js");
+    } catch (error) {
+        console.log(error);
+        return { status: 500, message: 'Internal Server Error' };
+    }
+}
+
+function library2Array (userID) {
+    try {
+        DB2Array(`
+            SELECT * FROM library 
+            JOIN games ON library.gameID = games.gameID 
+            WHERE userID=?`, 
+            userID, "page_yourGames.js");
+    } catch (error) {
+        console.log(error);
+        return { status: 500, message: 'Internal Server Error' };
+    }
+}
+
+module.exports={
+    DB2Array,
+    news2Array,
+    library2Array
+};

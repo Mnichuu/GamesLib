@@ -13,16 +13,15 @@
 
         <link rel="stylesheet" href="../../styles/dimensions.css">
         <link rel="stylesheet" href="../../styles/colors.css">
-        <link rel="stylesheet" href="../../styles/styles/base.css">
+        <link rel="stylesheet" href="../../styles/base.css">
         <link rel="stylesheet" href="../../styles/headers.css">
         <link rel="stylesheet" href="../../styles/verification-block.css">
-        <link rel="stylesheet" href="../../styles/hexagon.css">
+        <link rel="stylesheet" href="../../styles/verification-game-block.css">
 
         <script src="../../prefabs/headers.js"></script>
         <script src="../../code/user.js"></script>
         <script src="../../prefabs/addVerificationList.js"></script>
         <script src="../../code/page_verification.js"></script>
-        <script src="../../controller/db/DB2ArrayVerification.php"></script>
     </head>
     <body>
         <script>
@@ -32,7 +31,7 @@
         <main>
             <div id="verificationListContainer"></div>
             <script>
-                PrefabVerificatorList.addGames(document.getElementById('verificationListContainer'), gamesData);
+                PrefabVerificatorList.addGames2Verification(document.getElementById('verificationListContainer'), gamesData);
             </script>
         </main>
         </body>
