@@ -9,6 +9,7 @@ const { DB2Array, news2Array,
 const { addGame2Mysql } = require('./controller/admin');
 const { addGameToLibrary } = require('./controller/addGameToLibrary');
 const { verifyGame } = require('./controller/verifyGame');
+const { addGameToVerification } = require('./controller/addGameToVerification')
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -105,9 +106,15 @@ app.post("/add-game-library", async (req, res) => {
     res.redirect("/views/news");
 });
 
+app.post("/add-game-verification", async (req, res) => {
+    const { gameID } = req.body;
+    addGameToVerification(gameID);
+    res.redirect("/views/news");
+});
+
 app.post("/verify-game", async (req, res) => {
     const { name } = req.body;
-    verifyGame.verifyGame(name);
+    verifyGame(name);
     DB2Array("SELECT * FROM games WHERE verified = '0'", '', "page_verification.js");
     res.redirect("/views/verification");
 });

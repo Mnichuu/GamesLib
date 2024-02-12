@@ -29,6 +29,26 @@ const PrefabAddNews = (function() {
             `;
         }
 
+        if(User.getUserType() == 1) {
+            return `
+            <div class="game-block">
+                    <p>
+                        <strong>${gameData.name}</strong>
+                    </p>
+                    <details>
+                        <summary>Toggle Description</summary>
+                        <p>${gameData.description}</p>
+                    </details>
+                    <form class="add-to-verification" action="/add-game-verification" method="POST">
+                    <input type="hidden" name="gameID" value="${gameData.gameID}">
+                    <button class="add-to-verification-btn" data-gameid="${gameData.gameID}">
+                        Verify again
+                    </button>
+                </form>
+                </div>
+            `
+        }
+
         let text = 'Add to Library';
         let action = "/add-game-library";
         if (gameData.isDownloaded == null) {

@@ -57,3 +57,21 @@ button.add-to-library-btn:hover {
     border-radius: 0.5em;
     cursor:pointer;
 }
+
+.add-to-verification {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+button.add-to-verification-btn {
+    color: #ff3300a6;
+    font-weight: 600;
+    background-color: #ffa994a6;
+    border-radius: 0.5em;
+}
+
+button.add-to-verification-btn:hover {
+    background-color: #5e443da6;
+    border-radius: 0.5em;
+    cursor:pointer;
+}
