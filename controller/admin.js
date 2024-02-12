@@ -3,7 +3,11 @@ const fs = require ('fs');
 
 async function addGame2Mysql (gameName, description) {
     try {
-        await queryAsync('INSERT INTO games (name, verified, description) VALUES (?, 0, ?)', [gameName, description]);
+        await queryAsync(`
+        INSERT INTO games (name, verified, description) 
+        VALUES (?, 0, ?);`, 
+        [gameName, description]);
+
         return {
             status: 200,
             message: 'Game added successfully',

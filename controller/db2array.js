@@ -43,6 +43,18 @@ function news2Array (userID) {
     }
 }
 
+function news2ArrayUnlogged () {
+    try {
+        DB2Array(`
+            SELECT * FROM games 
+            WHERE verified = ?;`, 
+            [1], "page_news.js");
+    } catch (error) {
+        console.log(error);
+        return { status: 500, message: 'Internal Server Error' };
+    }
+}
+
 function library2Array (userID) {
     try {
         DB2Array(`
@@ -59,5 +71,6 @@ function library2Array (userID) {
 module.exports={
     DB2Array,
     news2Array,
+    news2ArrayUnlogged,
     library2Array
 };
