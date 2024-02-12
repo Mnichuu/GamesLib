@@ -23,7 +23,6 @@
         <script src="../../prefabs/headers.js"></script>
         <script src="../../code/user.js"></script>
         <script src="../../code/page_profile.js"></script>
-        <script src="../../prefabs/addDescription.js"></script>
         <script src="../../prefabs/UserDescriptionAndAvatar.js"></script>
         <script src="../../prefabs/addGameTabs.js"></script>
     </head>
@@ -36,7 +35,7 @@
             <div id="yourAvatar"></div>
             <div id="yourGameBoxes"></div>
             <script>
-                PrefabgenerateDesc.addDescriptions(document.getElementById('yourDescription'), gamesData);
+
                 PrefabGenerateUser.addUserProfiles(document.getElementById('yourAvatar'),gamesData);
                 PrefabGenerateBoxes.addBoxItems(document.getElementById('yourGameBoxes'),gamesData);
             </script>

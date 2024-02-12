@@ -1,20 +1,11 @@
 const bcrypt = require("bcryptjs");
 const { queryAsync } = require('./database');
 
-async function registerUser(name, email, password, password_confirm) {
+async function UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description, email) {
     try {
-        const result = await queryAsync('SELECT login FROM user_credentials WHERE login = ?', [name]);
-
-        if (result.length > 0) {
-            return { status: 403, message: 'This email is already in use' };
-        } else if (password !== password_confirm) {
-            return { status: 403, message: 'Passwords do not match!' };
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        await queryAsync('INSERT INTO user_credentials (login, email, password, userTypeID) VALUES (?, ?, ?, 3)', [name, email, hashedPassword]);
-
+        const basic_photo = "user.jpg"
+        await queryAsync('UPDATE user_profile SET description = ?, nick = ?, profilePhoto = ?, full_name = ?, age = ?, phone = ?, address = ? WHERE email = ?', [user_description, user_name, basic_photo,user_full_name, user_age, user_phone, user_address,email]);
+        await queryAsync('UPDATE user_credentials SET login = ? WHERE email = ?', [user_name, email]);
         return { status: 200, message: 'User registered!' };
     } catch (error) {
         console.log(error);
@@ -23,5 +14,5 @@ async function registerUser(name, email, password, password_confirm) {
 }
 
 module.exports = {
-    registerUser
+    UserDescriptionEdit
 };
