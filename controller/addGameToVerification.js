@@ -1,5 +1,5 @@
 const { queryAsync } = require('./database');
-const { news2Array } = require('./db2array');
+const { news2ArrayUnlogged } = require('./db2array');
 
 async function addGameToVerification(gameID) {
     try {
@@ -9,7 +9,7 @@ async function addGameToVerification(gameID) {
         WHERE gameID=?;`, 
         [gameID]);
 
-        news2Array();
+        news2ArrayUnlogged();
 
         return { status: 200, message: 'Game send to verification'};
     } catch (error) {
