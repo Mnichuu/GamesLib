@@ -5,8 +5,8 @@ const PrefabGenerateUser = (function () {
 
     function addUserProfiles(container, userData) {
         userData.forEach(userData => {
-            if (userData.profileID == User.getUserId()) {
-                container.innerHTML += generateUser(userData, userData.profileID);
+            if (userData.userID == User.getUserId()) {
+                container.innerHTML += generateUser(userData, userData.userID);
 
                 document.querySelectorAll('.btn.btn-primary').forEach(button => {
                     button.addEventListener('click', () => {
@@ -32,8 +32,6 @@ const PrefabGenerateUser = (function () {
         <div class="card">
             <div class="left-containers">
                 <div class="left-container_1">
-                    <h2 class="gradienttext">${username}</h2>
-                    
                 </div>
                 <div class="left-container_2">
                 </div>
@@ -85,7 +83,7 @@ const PrefabGenerateUser = (function () {
         const phone = userData.phone;
         const address = userData.address;
         const description = userData.description;
-        const email = userData.email;
+        const userID = userData. userID;
         popupContainer.className = 'popup-container';
 
         // Create the form HTML
@@ -114,7 +112,7 @@ const PrefabGenerateUser = (function () {
                     <textarea placeholder="Add profile description.... : ${description}"  tabindex="7" required name="user_description" ></textarea >
                 </fieldset>
                 <fieldset>
-                    <input type="hidden" name="email" value="${email}">
+                    <input type="hidden" name="userID" value="${userID}">
                 </fieldset>
                 <fieldset>
                     <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Save Info</button>

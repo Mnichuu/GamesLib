@@ -92,6 +92,7 @@ button.mdc-button__label {
 
     &.mdc-button__label {
         font-weight: 600;
+        font-size: 18px;
         color: #ffffff;
         text-transform: uppercase;
         padding: 0.5em 1em; /* Dostosowano padding */

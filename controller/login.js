@@ -4,7 +4,7 @@ const { news2Array } = require('./db2array');
 
 async function loginUser(name, password) {
     try {
-        const result = await queryAsync('SELECT userID, userTypeID, password FROM user_credentials WHERE email = ?', [name]);
+        const result = await queryAsync('SELECT userID, userTypeID, password FROM user_credentials WHERE login = ?', [name]);
 
         if (result.length === 0) {
             return { status: 401, message: 'Invalid login credentials' };
