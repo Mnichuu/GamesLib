@@ -26,7 +26,7 @@ const PrefabHeader = (function(){
                             <hr>
                         </section>
                     </div>
-                    <div class="mdc-top-app-bar__row">
+                    <div class="mdc-top-app-bar__row__page">
                         <section_header class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">`
                             + generatePages()
                         + `</section_header>

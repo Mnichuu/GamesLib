@@ -1,30 +1,35 @@
 const gamesData = [
   {
-    "profileID": 1,
-    "userID": 15,
-    "description": "Administrator account",
-    "nick": "Admin",
-    "profilePhoto": "admin.jpg"
+    "profileID": 12,
+    "description": "ddddddaaaaaaaaaddddddddddd",
+    "nick": "dddddddddddddddddddddddddddd",
+    "profilePhoto": "user.jpg",
+    "full_name": "ddddddddddddddddddd",
+    "age": 66,
+    "phone": 69696969,
+    "address": "24 Bartosza Głowackiego 24",
+    "email": "xD"
   },
   {
-    "profileID": 2,
-    "userID": 16,
-    "description": "Moderator account",
-    "nick": "Mod",
-    "profilePhoto": "moderator.jpg"
+    "profileID": 13,
+    "description": "dsda",
+    "nick": "dupa",
+    "profilePhoto": "user.jpg",
+    "full_name": "Dawid Stefanowicz",
+    "age": 22222,
+    "phone": 531334049,
+    "address": "24 Bartosza Głowackiego 24",
+    "email": "test2@test2"
   },
   {
-    "profileID": 3,
-    "userID": 10,
-    "description": "User 1 account",
-    "nick": "User1",
-    "profilePhoto": "user1.jpg"
-  },
-  {
-    "profileID": 4,
-    "userID": 11,
-    "description": "User 2 account",
-    "nick": "User2",
-    "profilePhoto": "user2.jpg"
+    "profileID": 14,
+    "description": "DUPA DUPA ",
+    "nick": "xDxD",
+    "profilePhoto": "user.jpg",
+    "full_name": "Dawid Stefanowicz",
+    "age": 28,
+    "phone": 531334049,
+    "address": "24 Bartosza Głowackiego 24",
+    "email": "angej@angej"
   }
 ];

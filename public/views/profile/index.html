@@ -18,12 +18,12 @@
         <link rel="stylesheet" href="../../styles/opinion_box.css">
         <link rel="stylesheet" href="../../styles/avatar.css">
         <link rel="stylesheet" href="../../styles/profile-buttons.css">
+        <link rel="stylesheet" href="../../styles/hexagon.css">
 
         <script src="../../prefabs/headers.js"></script>
         <script src="../../code/user.js"></script>
         <script src="../../code/page_profile.js"></script>
-        <script src="../../prefabs/addDescription.js"></script>
-        <script src="../../prefabs/addUserProfile.js"></script>
+        <script src="../../prefabs/UserDescriptionAndAvatar.js"></script>
         <script src="../../prefabs/addGameTabs.js"></script>
     </head>
     <body>
@@ -35,9 +35,9 @@
             <div id="yourAvatar"></div>
             <div id="yourGameBoxes"></div>
             <script>
-                PrefabgenerateDesc.addDescriptions(document.getElementById('yourDescription'), userData);
-                PrefabGenerateUser.addUserProfiles(document.getElementById('yourAvatar'),userData);
-                PrefabGenerateBoxes.addBoxItems(document.getElementById('yourGameBoxes'),userData);
+
+                PrefabGenerateUser.addUserProfiles(document.getElementById('yourAvatar'),gamesData);
+                PrefabGenerateBoxes.addBoxItems(document.getElementById('yourGameBoxes'),gamesData);
             </script>
         </main>
     </body>

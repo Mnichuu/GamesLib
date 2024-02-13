@@ -1,5 +1,8 @@
 const express = require('express');
 const path = require("path");
+
+const profile = require('./controller/profile');
+
 const dotenv = require('dotenv');
 
 const { registerUser } = require('./controller/register');
@@ -78,6 +81,8 @@ app.post("/auth/yourGames", async (req, res) => {
 
 // TODO: dodanie osobnego pliku z tablicą i inne query dla profilu
 app.post("/auth/profile", async (req, res) => {
+    const { user_name, user_full_name, user_age, user_phone, user_address, user_description,email } = req.body;
+    const result2 = await profile.UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,email);
     DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });

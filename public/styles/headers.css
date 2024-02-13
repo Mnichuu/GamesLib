@@ -6,6 +6,10 @@ header {
 .mdc-top-app-bar__section img { /* logo */
     margin-right: var(--margin-standard);
 
+
+}
+.mdc-top-app-bar__row__page{
+    box-shadow: 0 15px 35px rgba(0,0,0,9);
 }
 
 header .mdc-top-app-bar__row:nth-child(1) { /* górne akcje */
@@ -38,17 +42,15 @@ header .mdc-top-app-bar__row:nth-child(3) .mdc-top-app-bar__section .mdc-button 
     margin-right: var(--margin-standard);
     transition-duration: var(--animation-time);
 
-}
-.mdc-top-app-bar__section .mdc-icon-button { /* przycisk szukaj */
-    color: var(--color-secondary);
-    transition-duration: var(--animation-time);
 
 }
+
 
 .mdc-top-app-bar__action-item:hover { /* elementy, kursor na */
     color: var(--color-accent) !important;
 
 }
+
 
 .current-page-action-item { /* elementy, kursor na */
     color: var(--color-accent-second) !important;
