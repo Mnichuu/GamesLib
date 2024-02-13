@@ -21,7 +21,6 @@ async function registerUser(name, email, password, password_confirm) {
 
         await queryAsync('INSERT INTO user_credentials (login, email, password, userTypeID) VALUES (?, ?, ?, 3)', [name, email, hashedPassword]);
         const user_ID =  await queryAsync('SELECT userID FROM user_credentials WHERE email = ?',[email]);
-        console.log(user_ID[0].userID)
         await queryAsync('INSERT INTO user_profile (description, nick, profilePhoto, full_name,age,phone,address,userID) VALUES  (?, ?, ?, ?, ?, ?, ?, ?)', [basic_description, name, basic_photo,basic_name,basic_age, basic_phone, basic_address,user_ID[0].userID]);
 
         return { status: 200, message: 'User registered!' };

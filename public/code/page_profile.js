@@ -89,13 +89,13 @@ const gamesData = [
   },
   {
     "profileID": 20,
-    "description": "fdsfd",
+    "description": "adadada",
     "nick": "dupa",
     "profilePhoto": "user.jpg",
-    "full_name": "Dawid Stefanowicz",
-    "age": 12,
-    "phone": 531334049,
-    "address": "24 Bartosza Głowackiego 24",
+    "full_name": "Hej hej",
+    "age": 123,
+    "phone": 222222222,
+    "address": "ddd",
     "userID": 23
   }
 ];

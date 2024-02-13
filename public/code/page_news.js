@@ -10,5 +10,11 @@ const gamesData = [
     "name": "Game 2",
     "description": null,
     "isDownloaded": null
+  },
+  {
+    "gameID": 4,
+    "name": "dupa",
+    "description": "dupadupa",
+    "isDownloaded": 0
   }
 ];
