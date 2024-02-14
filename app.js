@@ -93,6 +93,12 @@ app.post("/auth/profile", async (req, res) => {
     res.redirect("/views/profile");
 });
 
+app.post("/auth/avatar", async (req, res) => {
+    const {avatar_picture_id,userID} = req.body;
+    const result2 = await profile.UserProfilePicture(avatar_picture_id, userID);
+    res.redirect("/views/profile");
+});
+
 app.post("/auth/verification", async (req, res) => {
     const result = db2array.DB2Array("SELECT * FROM games WHERE verified = '0'", '', "page_verification.js");
     res.redirect("/views/verification");

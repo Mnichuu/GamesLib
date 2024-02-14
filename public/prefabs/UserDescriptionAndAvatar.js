@@ -129,26 +129,50 @@ const PrefabGenerateUser = (function () {
     }
 
     function showPopup_avatar(userData) {
-        // Create a container div for the popup
+        const userID = userData.userID;
         const popupContainer_2 = document.createElement('div_2');
         popupContainer_2.className = 'popup-container_2';
 
         // Create the form HTML
         popupContainer_2.innerHTML = `
-        <div class="description_container">  
-           
-            <form id="contact" action="/auth/profile" method="post">
-            <h4>Edit Your Information</h4>
-                
-                <fieldset>
-                    <input placeholder="Nick (max 25 characters): " type="text" tabindex="1"  name="user_name" maxlength="25">
-                </fieldset>
+        <div class="description_container_2">  
+            <form id="contact" action="auth/avatar" method="post">
+                <h4>Change Profile Picture</h4>    
+                <div class="avatar-container">
+                    ${generateAvatarButtons()}
+                </div>
+                <input type="hidden" id="selectedAvatarId" name="selectedAvatarId" value="">
+                <input type="hidden" name="userID" value="${userID}">
             </form>
         </div>
-`;
-        document.body.appendChild(popupContainer_2);
+    `;
 
+        document.body.appendChild(popupContainer_2);
     }
 
+    function updateSelectedAvatar(avatarIndex) {
+        document.getElementById('selectedAvatarId').value = avatarIndex;
+    }
+
+    function generateAvatarButtons() {
+        let avatarButtonsHTML = '';
+
+        for (let row = 0; row < 6; row++) {
+            avatarButtonsHTML += '<div class="avatar-row">';
+
+            for (let col = 0; col < 5; col++) {
+                const avatarIndex = row * 5 + col;
+                avatarButtonsHTML += `
+                <button class="avatar-button" onclick="updateSelectedAvatar(${avatarIndex});">
+                    <img src="/images/avatar${avatarIndex}.png" alt="Avatar ${avatarIndex}" ">
+                </button>
+            `;
+            }
+
+            avatarButtonsHTML += '</div>';
+        }
+
+        return avatarButtonsHTML;
+    }
 
 })();

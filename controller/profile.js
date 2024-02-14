@@ -33,6 +33,19 @@ async function UserDescriptionEdit(user_name, user_full_name, user_age, user_pho
     }
 }
 
+async function UserProfilePicture(avatar_picture_id, userID) {
+    try {
+        console.log(avatar_picture_id)
+        await queryAsync('UPDATE user_profile SET profilePhoto = ? WHERE userID = ?' , [avatar_picture_id, userID]);
+
+        return { status: 200, message: 'User registered!' };
+    } catch (error) {
+        console.log(error);
+        return { status: 500, message: 'Internal Server Error' };
+    }
+}
+
 module.exports = {
-    UserDescriptionEdit
+    UserDescriptionEdit,
+    UserProfilePicture
 };
