@@ -15,6 +15,6 @@ const gamesData = [
     "gameID": 4,
     "name": "dupa",
     "description": "dupadupa",
-    "isDownloaded": 0
+    "isDownloaded": null
   }
 ];

@@ -91,11 +91,33 @@ const gamesData = [
     "profileID": 20,
     "description": "adadada",
     "nick": "dupa",
-    "profilePhoto": "user.jpg",
+    "profilePhoto": "4",
     "full_name": "Hej hej",
     "age": 123,
     "phone": 222222222,
     "address": "ddd",
     "userID": 23
+  },
+  {
+    "profileID": 21,
+    "description": "I am a USER!",
+    "nick": "jedr",
+    "profilePhoto": "0",
+    "full_name": "John Doe",
+    "age": 111,
+    "phone": 123123123,
+    "address": "Noland",
+    "userID": 24
+  },
+  {
+    "profileID": 22,
+    "description": "I am a USER!",
+    "nick": "pupa",
+    "profilePhoto": "11",
+    "full_name": "John Doe",
+    "age": 111,
+    "phone": 123123123,
+    "address": "Noland",
+    "userID": 25
   }
 ];

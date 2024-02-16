@@ -13,7 +13,7 @@ async function registerUser(name, email, password, password_confirm) {
 
         const hashedPassword = await bcrypt.hash(password, 10);
         const basic_description = "I am a USER!"
-        const basic_photo = "user.jpg"
+        const basic_photo = "0"
         const basic_name = "John Doe"
         const basic_phone = 123123123
         const basic_age = 111

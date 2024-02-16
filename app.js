@@ -96,6 +96,7 @@ app.post("/auth/profile", async (req, res) => {
 app.post("/auth/avatar", async (req, res) => {
     const {avatar_picture_id,userID} = req.body;
     const result2 = await profile.UserProfilePicture(avatar_picture_id, userID);
+    const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });
 

@@ -33,12 +33,13 @@ const PrefabGenerateUser = (function () {
         const phone = userData.phone;
         const address = userData.address;
         const description = userData.description;
+        const avatarIndex = userData.profilePhoto;
 
         return `
         <div class="card">
             <div class="left-containers">
                 <div class="left-container_1">
-                    <img src="/images/avatar0.png" alt="Avatar" width="250" height="250">
+                    <img src="/images/avatar${avatarIndex}.png" alt="Avatar" width="250" height="250">
                     <button_avatar type="button" class="button2" id="editButton">Change Profile Photo</button_avatar>
                 </div>
                 <div class="left-container_2">
@@ -136,39 +137,39 @@ const PrefabGenerateUser = (function () {
         // Create the form HTML
         popupContainer_2.innerHTML = `
         <div class="description_container_2">  
-            <form id="contact" action="auth/avatar" method="post">
+            
                 <h4>Change Profile Picture</h4>    
                 <div class="avatar-container">
-                    ${generateAvatarButtons()}
-                </div>
-                <input type="hidden" id="selectedAvatarId" name="selectedAvatarId" value="">
-                <input type="hidden" name="userID" value="${userID}">
-            </form>
+                    ${generateAvatarButtons(userData)}
+                </div> </div>
+                
+           
         </div>
     `;
 
         document.body.appendChild(popupContainer_2);
     }
 
-    function updateSelectedAvatar(avatarIndex) {
-        document.getElementById('selectedAvatarId').value = avatarIndex;
-    }
 
-    function generateAvatarButtons() {
+    function generateAvatarButtons(userData) {
         let avatarButtonsHTML = '';
-
+        const userID = userData.userID;
         for (let row = 0; row < 6; row++) {
             avatarButtonsHTML += '<div class="avatar-row">';
 
             for (let col = 0; col < 5; col++) {
                 const avatarIndex = row * 5 + col;
                 avatarButtonsHTML += `
-                <button class="avatar-button" onclick="updateSelectedAvatar(${avatarIndex});">
-                    <img src="/images/avatar${avatarIndex}.png" alt="Avatar ${avatarIndex}" ">
+            <form id="contact" action="/auth/avatar" method="post">
+                <button class="avatar-button">
+                <input type="hidden" name="avatar_picture_id" value="${avatarIndex}">           
+                <input type="hidden" name="userID" value="${userID}">
+                    <img src="/images/avatar${avatarIndex}.png" alt="Avatar ${avatarIndex}" ">                  
                 </button>
+                    
+            </form>
             `;
             }
-
             avatarButtonsHTML += '</div>';
         }
 
