@@ -40,6 +40,7 @@ const PrefabGenerateUser = (function () {
             <div class="left-containers">
                 <div class="left-container_1">
                     <img src="/images/avatar${avatarIndex}.png" alt="Avatar" width="250" height="250">
+                   
                     <button_avatar type="button" class="button2" id="editButton">Change Profile Photo</button_avatar>
                 </div>
                 <div class="left-container_2">
@@ -136,14 +137,10 @@ const PrefabGenerateUser = (function () {
 
         // Create the form HTML
         popupContainer_2.innerHTML = `
-        <div class="description_container_2">  
-            
-                <h4>Change Profile Picture</h4>    
+        <div class="description_container_2">     
                 <div class="avatar-container">
                     ${generateAvatarButtons(userData)}
-                </div> </div>
-                
-           
+                </div>
         </div>
     `;
 
@@ -154,13 +151,13 @@ const PrefabGenerateUser = (function () {
     function generateAvatarButtons(userData) {
         let avatarButtonsHTML = '';
         const userID = userData.userID;
-        for (let row = 0; row < 6; row++) {
+        for (let row = 0; row < 4; row++) {
             avatarButtonsHTML += '<div class="avatar-row">';
 
-            for (let col = 0; col < 5; col++) {
-                const avatarIndex = row * 5 + col;
+            for (let col = 0; col < 8; col++) {
+                const avatarIndex = row * 8 + col;
                 avatarButtonsHTML += `
-            <form id="contact" action="/auth/avatar" method="post">
+            <form id="contact_avatar" action="/auth/avatar" method="post">
                 <button class="avatar-button">
                 <input type="hidden" name="avatar_picture_id" value="${avatarIndex}">           
                 <input type="hidden" name="userID" value="${userID}">

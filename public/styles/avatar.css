@@ -243,8 +243,8 @@ fieldset {
 #contact input[type="text"],
 #contact textarea {
     width: 100%;
-    border: 1px solid #CCC;
-    background: #FFF;
+
+
     margin: 0 0 5px;
     padding: 10px;
 }
@@ -322,11 +322,11 @@ fieldset {
 }
 
 .avatar-button {
-    margin: 5px;
+    margin: 10px;
 }
 
 .avatar-button img {
-    width: 150px;
+    width: 100px;
     height: auto;
 }
 
@@ -337,5 +337,12 @@ fieldset {
         left: 6vh; /* Adjust the left position based on your layout */
         right: 6vh; /* Adjust the right position based on your layout */
         width: calc(60% - 2vh); /* Adjust the width based on your layout */
-        margin: 0 auto;
+        margin: 4vh auto;
 }
+#contact_avatar {
+    background: #313131;
+    padding: 10px;
+    margin:  0;
+    border: 2px solid white;
+}
+

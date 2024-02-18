@@ -24,8 +24,8 @@ async function UserDescriptionEdit(user_name, user_full_name, user_age, user_pho
             user_description = result[0].description
         }
 
-        const basic_photo = "user.jpg"
-        await queryAsync('UPDATE user_profile SET description = ?, nick = ?, profilePhoto = ?, full_name = ?, age = ?, phone = ?, address = ? WHERE userID = ?', [user_description, user_name, basic_photo,user_full_name, user_age, user_phone, user_address,userID]);
+
+        await queryAsync('UPDATE user_profile SET description = ?, nick = ?, full_name = ?, age = ?, phone = ?, address = ? WHERE userID = ?', [user_description, user_name,user_full_name, user_age, user_phone, user_address,userID]);
         return { status: 200, message: 'User registered!' };
     } catch (error) {
         console.log(error);

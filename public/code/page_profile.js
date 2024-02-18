@@ -89,13 +89,13 @@ const gamesData = [
   },
   {
     "profileID": 20,
-    "description": "adadada",
-    "nick": "dupa",
-    "profilePhoto": "4",
-    "full_name": "Hej hej",
-    "age": 123,
+    "description": "d ddddddddd d                ddddddddddddd ddddddd",
+    "nick": "asdasdasdasdasdasdasdasda",
+    "profilePhoto": "18",
+    "full_name": "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas",
+    "age": 222,
     "phone": 222222222,
-    "address": "ddd",
+    "address": "dssssssssssssssssasdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd",
     "userID": 23
   },
   {
