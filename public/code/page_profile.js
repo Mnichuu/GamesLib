@@ -8,7 +8,9 @@ const gamesData = [
     "age": 22,
     "phone": 531334049,
     "address": "24 Bartosza Głowackiego 24",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 13,
@@ -19,7 +21,9 @@ const gamesData = [
     "age": 22222,
     "phone": 531334049,
     "address": "24 Bartosza Głowackiego 24",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 14,
@@ -30,7 +34,9 @@ const gamesData = [
     "age": 28,
     "phone": 531334049,
     "address": "24 Bartosza Głowackiego 24",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 15,
@@ -41,7 +47,9 @@ const gamesData = [
     "age": 111,
     "phone": 123123123,
     "address": "Noland",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 16,
@@ -52,7 +60,9 @@ const gamesData = [
     "age": 111,
     "phone": 123123123,
     "address": "Noland",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 17,
@@ -63,7 +73,9 @@ const gamesData = [
     "age": 111,
     "phone": 123123123,
     "address": "Noland",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 18,
@@ -74,7 +86,9 @@ const gamesData = [
     "age": 111,
     "phone": 123123123,
     "address": "Noland",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 19,
@@ -85,18 +99,22 @@ const gamesData = [
     "age": 111,
     "phone": 123123123,
     "address": "Noland",
-    "userID": null
+    "userID": null,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 20,
     "description": "d ddddddddd d                ddddddddddddd ddddddd",
     "nick": "asdasdasdasdasdasdasdasda",
-    "profilePhoto": "18",
+    "profilePhoto": "2",
     "full_name": "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas",
     "age": 222,
     "phone": 222222222,
     "address": "dssssssssssssssssasdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd",
-    "userID": 23
+    "userID": 23,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 21,
@@ -107,7 +125,9 @@ const gamesData = [
     "age": 111,
     "phone": 123123123,
     "address": "Noland",
-    "userID": 24
+    "userID": 24,
+    "games_library": null,
+    "games_downloaded": null
   },
   {
     "profileID": 22,
@@ -118,6 +138,21 @@ const gamesData = [
     "age": 111,
     "phone": 123123123,
     "address": "Noland",
-    "userID": 25
+    "userID": 25,
+    "games_library": null,
+    "games_downloaded": null
+  },
+  {
+    "profileID": 23,
+    "description": "dd",
+    "nick": "o",
+    "profilePhoto": "10",
+    "full_name": "John Doe",
+    "age": 11,
+    "phone": 123123123,
+    "address": "Noland",
+    "userID": 27,
+    "games_library": 2,
+    "games_downloaded": 0
   }
 ];

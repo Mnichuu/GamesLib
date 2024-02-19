@@ -4,7 +4,10 @@ const { queryAsync } = require('./database');
 async function UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description, userID) {
     try {
         const result = await queryAsync('SELECT description , nick, profileID, full_name, age, phone, address FROM user_profile WHERE userID = ?', [userID]);
-        const email = await queryAsync('SELECT email FROM user_credentials WHERE userID = ?', [userID]);
+        const games_number = await queryAsync('SELECT COUNT(*) AS number_of FROM library WHERE userID = ?', [userID]);
+        const is_downloaded = await queryAsync('SELECT COUNT(*) AS games_downloaded FROM library WHERE isDownloaded = 1 AND userID = ?', [userID]);
+
+
         if(user_name == ""){
             user_name = result[0].nick
         }
@@ -25,7 +28,7 @@ async function UserDescriptionEdit(user_name, user_full_name, user_age, user_pho
         }
 
 
-        await queryAsync('UPDATE user_profile SET description = ?, nick = ?, full_name = ?, age = ?, phone = ?, address = ? WHERE userID = ?', [user_description, user_name,user_full_name, user_age, user_phone, user_address,userID]);
+        await queryAsync('UPDATE user_profile SET description = ?, nick = ?, full_name = ?, age = ?, phone = ?, address = ? , games_library = ?, games_downloaded = ? WHERE userID = ?', [user_description, user_name,user_full_name, user_age, user_phone, user_address,games_number[0].number_of, is_downloaded[0].games_downloaded,userID]);
         return { status: 200, message: 'User registered!' };
     } catch (error) {
         console.log(error);

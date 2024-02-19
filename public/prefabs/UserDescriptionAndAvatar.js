@@ -34,6 +34,8 @@ const PrefabGenerateUser = (function () {
         const address = userData.address;
         const description = userData.description;
         const avatarIndex = userData.profilePhoto;
+        const all_games = userData.games_library
+        const games_downloaded = userData.games_downloaded
 
         return `
         <div class="card">
@@ -44,6 +46,12 @@ const PrefabGenerateUser = (function () {
                     <button_avatar type="button" class="button2" id="editButton">Change Profile Photo</button_avatar>
                 </div>
                 <div class="left-container_2">
+                    <div class="downloaded-games">
+                        Wszystkie pobrane gry: ${games_downloaded}
+                    </div>
+                    <div class="all-games-in-library">
+                        Wszystkie gry w bibliotece ${all_games}
+                    </div>
                 </div>
             </div>
             <div class="right-container">
