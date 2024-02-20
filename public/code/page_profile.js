@@ -105,16 +105,16 @@ const gamesData = [
   },
   {
     "profileID": 20,
-    "description": "d ddddddddd d                ddddddddddddd ddddddd",
-    "nick": "asdasdasdasdasdasdasdasda",
-    "profilePhoto": "2",
+    "description": "hej hej wszystkim jestem tomasz i lubie jesc\r\n",
+    "nick": "ddddddddddddddd",
+    "profilePhoto": "0",
     "full_name": "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas",
-    "age": 222,
+    "age": 12,
     "phone": 222222222,
     "address": "dssssssssssssssssasdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd",
     "userID": 23,
-    "games_library": null,
-    "games_downloaded": null
+    "games_library": 3,
+    "games_downloaded": 0
   },
   {
     "profileID": 21,
@@ -153,6 +153,19 @@ const gamesData = [
     "address": "Noland",
     "userID": 27,
     "games_library": 2,
+    "games_downloaded": 0
+  },
+  {
+    "profileID": 24,
+    "description": "I am a USER!",
+    "nick": "tomasz",
+    "profilePhoto": "4",
+    "full_name": "John Doe",
+    "age": 111,
+    "phone": 123123123,
+    "address": "Noland",
+    "userID": 28,
+    "games_library": 0,
     "games_downloaded": 0
   }
 ];

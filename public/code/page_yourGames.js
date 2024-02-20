@@ -1,7 +1,16 @@
 const gamesData = [
   {
-    "ID": 7,
-    "userID": 27,
+    "ID": 6,
+    "userID": 23,
+    "gameID": 4,
+    "isDownloaded": 0,
+    "name": "dupa",
+    "verified": 1,
+    "description": "dupadupa"
+  },
+  {
+    "ID": 10,
+    "userID": 23,
     "gameID": 1,
     "isDownloaded": 0,
     "name": "Game 1",
@@ -9,8 +18,8 @@ const gamesData = [
     "description": null
   },
   {
-    "ID": 8,
-    "userID": 27,
+    "ID": 11,
+    "userID": 23,
     "gameID": 2,
     "isDownloaded": 0,
     "name": "Game 2",

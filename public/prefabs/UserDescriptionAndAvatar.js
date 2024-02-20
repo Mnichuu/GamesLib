@@ -42,8 +42,12 @@ const PrefabGenerateUser = (function () {
             <div class="left-containers">
                 <div class="left-container_1">
                     <img src="/images/avatar${avatarIndex}.png" alt="Avatar" width="250" height="250">
-                   
-                    <button_avatar type="button" class="button2" id="editButton">Change Profile Photo</button_avatar>
+                     <div class="avatar-username-container">
+                       <div class="avatar-username">
+                            ${username}
+                        </div>
+                        <button_avatar type="button" class="button2" id="editButton">Change Profile Photo</button_avatar>
+                       </div>
                 </div>
                 <div class="left-container_2">
                     <div class="downloaded-games">
@@ -108,7 +112,7 @@ const PrefabGenerateUser = (function () {
             <h4>Edit Your Information</h4>
                 
                 <fieldset>
-                    <input placeholder="Nick (max 25 characters): ${username}" type="text" tabindex="1"  name="user_name" maxlength="25">
+                    <input placeholder="Nick (max 15 characters): ${username}" type="text" tabindex="1"  name="user_name" maxlength="15">
                 </fieldset>
                 <fieldset>
                     <input placeholder="Name & Surname (max 50 characters): ${full_name}" type="text"  tabindex="2" name="user_full_name" maxlength="50">

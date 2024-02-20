@@ -10,6 +10,12 @@ body {
     flex-direction: column;
     align-items: center;
 }
+@media only screen and (min-width: 400px) {
+    body {
+        min-width: 400px; /* Minimalna szerokość */
+        min-height: 300px; /* Minimalna wysokość */
+    }
+}
 
 .card {
     display: flex;
@@ -54,6 +60,11 @@ body {
     border: 10px solid #000;
     border-radius: 8px;
     box-sizing: border-box;
+    margin-right: 20px; /* Dostosuj margines zgodnie z preferencjami */
+}
+
+.avatar-username {
+    margin-bottom: 14vh;
 }
 
 .button2 {
@@ -61,8 +72,8 @@ body {
     margin-left: 10px; /* Zmieniłem margin-left na 10px (możesz dostosować) */
     background-color: #50c879;
     color: #363636;
-    padding: 1.5vh 6vh;
-    font-size: 20px;
+    padding: 1.5vh 4vh;
+    font-size: 2vh;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -81,6 +92,7 @@ body {
     background: #434343;
     border-radius:30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden; /* zapobiega wyświetlaniu zawartości, która wychodzi poza kontener */
 }
 
 /* Additional styling for visibility */
@@ -98,22 +110,28 @@ table {
     align-items: center;
     width: 100%;
     height: 280px;
+
     border-collapse: collapse;
     word-wrap: break-word;
+    overflow-wrap: break-word; /* Zawijanie tekstu przy przepełnieniu */
+    margin: 0 auto;
 }
 
-td {
-    padding: 10px;
+table td {
+    padding-top: 20px;
     border: none;
     border-radius: 20px;
     color: white;
-    font-size: 20px;
+    font-size: 2.3vh;
     overflow-wrap: break-word; /* Zawijanie tekstu przy przepełnieniu */
     word-wrap: break-word; /* Dodatkowe zabezpieczenie dla niektórych przeglądarek */
+    max-width: 80vh; /* maksymalna szerokość komórki, aby uniknąć zbyt dużego rozciągania */
 }
 
 td:first-child {
     font-weight: bold;
+    overflow-wrap: break-word; /* Zawijanie tekstu przy przepełnieniu */
+    word-wrap: break-word; /* Dodatkowe zabezpieczenie dla niektórych przeglądarek */
 }
 .credit a {
     text-decoration: none;
@@ -243,8 +261,6 @@ fieldset {
 #contact input[type="text"],
 #contact textarea {
     width: 100%;
-
-
     margin: 0 0 5px;
     padding: 10px;
 }
@@ -294,12 +310,12 @@ fieldset {
 }
 
 .btn-primary {
-    margin-top: 6vh; /* Add margin to the top of the button */
+    margin-top: 8vh; /* Add margin to the top of the button */
     margin-left: 44vh;
     background-color: #50c879;
     color: #363636;
     padding: 1.5vh 6vh;
-    font-size: 20px;
+    font-size: 2.5vh;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -346,3 +362,35 @@ fieldset {
     border: 2px solid white;
 }
 
+.downloaded-games,
+.all-games-in-library {
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 4vh;
+}
+
+.left-container_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4vh;
+    border: 1px solid #ccc; /* Dodatkowy border dla celów wizualizacji */
+}
+
+.avatar-username {
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 4vh;
+}
+
+.avatar-username-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2vh;
+    margin-bottom: 2vh;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Jeśli chcesz, aby kontener był pełnej wysokości */
+}
