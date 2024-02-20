@@ -45,7 +45,7 @@ const PrefabHeader = (function(){
                     </a>`;
         }
         if(User.isLogged()){
-            return `<div class="userType">${User.getTypeOfLoggedUser()}</div>
+            return `<div class="userType">${User.getUserName()}</div>
                     <p>|</p>
                     <a onclick="User.logOut()" class="mdc-button mdc-top-app-bar__action-item">
                         <header class="mdc-button__ripple"></header>
@@ -66,11 +66,11 @@ const PrefabHeader = (function(){
         } else if (userType == User.UZYTKOWNIK_ZALOGOWANY) {
             return generatePageElementWithForm("Sklep", "news")
                 + generatePageElementWithForm("Twoje Gry", "yourGames")
-                + generatePageElementWithForm(`${User.getUserName()}`, "profile");
+                + generatePageElementWithForm(`${User.getUserNick()}`, "profile");
         } else if (userType == User.TWORCA){
             return generatePageElementWithForm("Sklep", "news")
                 + generatePageElement("Dodaj Grę", "admin")
-                + generatePageElementWithForm(`${User.getUserName()}`, "profile");
+                + generatePageElementWithForm(`${User.getUserNick()}`, "profile");
         } else {
              return generatePageElementWithForm("Sklep", "news");
          }
