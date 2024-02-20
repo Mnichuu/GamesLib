@@ -1,14 +1,14 @@
 const express = require('express');
 const path = require("path");
-
-const profile = require('./controller/profile');
-
 const dotenv = require('dotenv');
 
+const { UserDescriptionEdit } = require('./controller/profile');
 const { registerUser } = require('./controller/register');
 const { loginUser } = require('./controller/login');
-const { DB2Array, news2Array, 
-    news2ArrayUnlogged, library2Array } = require('./controller/db2array');
+const { DB2Array, 
+    news2Array, 
+    news2ArrayUnlogged, 
+    library2Array } = require('./controller/db2array');
 const { addGame2Mysql } = require('./controller/admin');
 const { addGameToLibrary } = require('./controller/addGameToLibrary');
 const { verifyGame } = require('./controller/verifyGame');
@@ -82,15 +82,15 @@ app.post("/auth/yourGames", async (req, res) => {
 // TODO: dodanie osobnego pliku z tablicą i inne query dla profilu
 app.post("/auth/profile", async (req, res) => {
     const { user_name, user_full_name, user_age, user_phone, user_address, user_description,userID } = req.body;
-    const result2 = await profile.UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
-    const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
+    UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
+    DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });
 
 app.post("/auth/avatar", async (req, res) => {
     const {avatar_picture_id,userID} = req.body;
-    const result2 = await profile.UserProfilePicture(avatar_picture_id, userID);
-    const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
+    UserProfilePicture(avatar_picture_id, userID);
+    DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });
 
