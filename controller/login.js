@@ -5,8 +5,9 @@ const { news2Array } = require('./db2array');
 async function loginUser(name, password) {
     try {
         const result = await queryAsync(`
-        SELECT userID, userTypeID, password 
-        FROM user_credentials 
+        SELECT UC.userID, UC.userTypeID, UC.password, UP.nick 
+        FROM user_credentials AS UC
+        JOIN user_profile AS UP ON UC.userID = UP.userID
         WHERE login = ?`, 
         [name]);
 
@@ -38,7 +39,8 @@ async function loginUser(name, password) {
             cookies: [
                 { name: "userId", value: user.userID, options: { expires: d, path: '/' } },
                 { name: "userType", value: user.userTypeID, options: { expires: d, path: '/' } },
-                { name: "userName", value: name, options: { expires: d, path: '/' } }
+                { name: "userName", value: name, options: { expires: d, path: '/' } },
+                { name: "userNick", value: user.nick, options: { expires: d, path: '/' } }
             ]
         };
     } catch (error) {

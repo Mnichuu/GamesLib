@@ -1,8 +1,10 @@
 const express = require('express');
+const cookieParser = require("cookie-parser");
 const path = require("path");
 const dotenv = require('dotenv');
 
-const { UserDescriptionEdit } = require('./controller/profile');
+const { UserDescriptionEdit, 
+    UserProfilePicture } = require('./controller/profile');
 const { registerUser } = require('./controller/register');
 const { loginUser } = require('./controller/login');
 const { DB2Array, 
@@ -12,7 +14,7 @@ const { DB2Array,
 const { addGame2Mysql } = require('./controller/admin');
 const { addGameToLibrary } = require('./controller/addGameToLibrary');
 const { verifyGame } = require('./controller/verifyGame');
-const { addGameToVerification } = require('./controller/addGameToVerification')
+const { addGameToVerification } = require('./controller/addGameToVerification');
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -22,6 +24,7 @@ const publicDir = path.join(__dirname, './public');
 app.use(express.static(publicDir));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
     res.render("index");
@@ -82,7 +85,13 @@ app.post("/auth/yourGames", async (req, res) => {
 // TODO: dodanie osobnego pliku z tablicą i inne query dla profilu
 app.post("/auth/profile", async (req, res) => {
     const { user_name, user_full_name, user_age, user_phone, user_address, user_description,userID } = req.body;
-    UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
+    result = UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
+    const d = new Date();
+    d.setTime(d.getTime() + (30 * 60 * 1000));
+    if(user_name && user_name != "") {
+        res.cookie("userNick", user_name, { expires: d, path: '/' });
+    }
+
     DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });
