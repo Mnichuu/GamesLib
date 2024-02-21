@@ -9,6 +9,7 @@ const User = (function(){
     const COOKIE_NAME = "userId";
     const COOKIE2_NAME = "userType";
     const COOKIE3_NAME = "userName";
+    const COOKIE4_NAME = "userNick";
 
     //metody, które będą dostępne publicznie
     return {
@@ -23,7 +24,8 @@ const User = (function(){
         tryLoggin,
         logOut,
         getUserType,
-        getUserName
+        getUserName,
+        getUserNick
     };
 
     //zwraca czy jest ktoś zalogowany
@@ -65,6 +67,10 @@ const User = (function(){
         return getUserNameFromCookies();
     }
 
+    function getUserNick(){
+        return getUserNickFromCookies();
+    }
+
     function tryLoggin(email, password) {
         return new Promise((resolve, reject) => {
             const sql = 'SELECT * FROM user_credentials WHERE login = ? AND password = ?';
@@ -98,8 +104,36 @@ const User = (function(){
         return document.cookie.match('(^|;)\\s*' + COOKIE2_NAME + '\\s*=\\s*([^;]+)')?.pop() || '';
     }
 
+    function decodeCookieValue(cookieValue) {
+        return decodeURIComponent(cookieValue.replace(/\+/g, ' '));
+    }
+
     function getUserNameFromCookies(){
-        return document.cookie.match('(^|;)\\s*' + COOKIE3_NAME + '\\s*=\\s*([^;]+)')?.pop() || '';
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(COOKIE3_NAME) === 0) {
+                return decodeCookieValue(cookie.substring(COOKIE3_NAME.length + 1, cookie.length));
+            }
+        }
+        return '';
+    }
+
+    function getUserNickFromCookies() {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i];
+            while (cookie.charAt(0) === ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(COOKIE4_NAME) === 0) {
+                return decodeCookieValue(cookie.substring(COOKIE4_NAME.length + 1, cookie.length));
+            }
+        }
+        return '';
     }
 
     function createUserIdCookie(id, userType, minutes){

@@ -1,5 +1,7 @@
 const { queryAsync } = require('./database');
-const { news2Array, library2Array } = require('./db2array');
+const { news2Array, 
+        library2Array, 
+        profile2Array } = require('./db2array');
 
 async function addGameToLibrary(gameID, userID) {
     try {
@@ -10,6 +12,7 @@ async function addGameToLibrary(gameID, userID) {
 
         news2Array(userID);
         library2Array(userID);
+        profile2Array(userID);
 
         return { status: 200, message: 'Game added to library'};
     } catch (error) {

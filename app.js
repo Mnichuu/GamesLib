@@ -1,13 +1,19 @@
 const express = require('express');
 const path = require("path");
-const register = require('./controller/register');
-const profile = require('./controller/profile');
-const login = require('./controller/login');
-const db2array = require('./controller/db2array');
-const admin = require('./controller/admin');
-const addToLibrary = require('./controller/addGameToLibrary');
-const verifyGame = require('./controller/verifyGame');
 const dotenv = require('dotenv');
+
+const { UserDescriptionEdit,
+    UserProfilePicture } = require('./controller/profile');
+const { registerUser } = require('./controller/register');
+const { loginUser } = require('./controller/login');
+const { DB2Array,
+    news2Array,
+    news2ArrayUnlogged,
+    library2Array } = require('./controller/db2array');
+const { addGame2Mysql } = require('./controller/admin');
+const { addGameToLibrary } = require('./controller/addGameToLibrary');
+const { verifyGame } = require('./controller/verifyGame');
+const { addGameToVerification } = require('./controller/addGameToVerification');
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -24,7 +30,7 @@ app.get("/", (req, res) => {
 
 app.post("/auth/register", async (req, res) => {
     const { name, email, password, password_confirm } = req.body;
-    const result = await register.registerUser(name, email, password, password_confirm);
+    const result = await registerUser(name, email, password, password_confirm);
     
     if(result.status === 200) {
         res.redirect("/");
@@ -35,7 +41,7 @@ app.post("/auth/register", async (req, res) => {
 
 app.post("/auth/login", async (req, res) => {
     const { name, password } = req.body;
-    const result = await login.loginUser(name, password);
+    const result = await loginUser(name, password);
 
     if (result.status === 200) {
         result.cookies.forEach(cookie => {
@@ -51,7 +57,7 @@ app.post("/auth/news", async (req, res) => {
     const cookieHeader = req.headers.cookie;
 
     if(!cookieHeader || !cookieHeader.includes('userId=')) {
-        db2array.DB2Array(`SELECT * FROM games WHERE verified=?;`, [1], "page_news.js");
+        news2ArrayUnlogged();
         res.redirect("/views/news");
         return;
     }
@@ -77,22 +83,28 @@ app.post("/auth/yourGames", async (req, res) => {
 // TODO: dodanie osobnego pliku z tablicą i inne query dla profilu
 app.post("/auth/profile", async (req, res) => {
     const { user_name, user_full_name, user_age, user_phone, user_address, user_description,userID } = req.body;
-    const result2 = await profile.UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
-    const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
+    result = UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
+
+    const d = new Date();
+    d.setTime(d.getTime() + (30 * 60 * 1000));
+    if(user_name && user_name != "") {
+        res.cookie("userNick", user_name, { expires: d, path: '/' });
+    }
+
     res.redirect("/views/profile");
 });
 
 app.post("/auth/avatar", async (req, res) => {
     const {avatar_picture_id,userID} = req.body;
-    const result2 = await profile.UserProfilePicture(avatar_picture_id, userID);
-    const result = db2array.DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
+    UserProfilePicture(avatar_picture_id, userID);
+
     res.redirect("/views/profile");
 });
 
 app.post("/auth/verification", async (req, res) => {
     DB2Array(`
     SELECT * FROM games 
-    WHERE verified = ?`,
+    WHERE verified = ?`, 
     [0], "page_verification.js");
 
     res.redirect("/views/verification");
