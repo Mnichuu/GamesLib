@@ -17,7 +17,6 @@ async function loginUser(name, password) {
         }
 
         const user = result[0];
-        console.log(user);
         const hashedPassword = user.password;
 
         const isPasswordValid = await bcrypt.compare(password, hashedPassword);

@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require("cookie-parser");
 const path = require("path");
 const dotenv = require('dotenv');
 
@@ -24,7 +23,6 @@ const publicDir = path.join(__dirname, './public');
 app.use(express.static(publicDir));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cookieParser());
 
 app.get("/", (req, res) => {
     res.render("index");
