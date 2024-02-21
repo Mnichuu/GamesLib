@@ -278,7 +278,7 @@ fieldset {
 .btn-primary {
     background-color: #50c879;
     margin-top: 10vh;
-    margin-left: 23vw;
+    margin-left: 18vw;
     color: #363636;
     padding: 2vh 6vh;
     font-size: 2.5vh;
@@ -289,7 +289,6 @@ fieldset {
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: column;
-
     align-items: center;
 
 }

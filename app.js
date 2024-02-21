@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require("cookie-parser");
 const path = require("path");
 const dotenv = require('dotenv');
 
@@ -24,7 +23,7 @@ const publicDir = path.join(__dirname, './public');
 app.use(express.static(publicDir));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cookieParser());
+
 
 app.get("/", (req, res) => {
     res.render("index");
@@ -82,7 +81,7 @@ app.post("/auth/yourGames", async (req, res) => {
     res.redirect("/views/yourGames");
 });
 
-// TODO: dodanie osobnego pliku z tablicą i inne query dla profilu
+
 app.post("/auth/profile", async (req, res) => {
     const { user_name, user_full_name, user_age, user_phone, user_address, user_description,userID } = req.body;
     result = UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);

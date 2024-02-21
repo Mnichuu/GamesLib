@@ -5,7 +5,7 @@ async function registerUser(name, email, password, password_confirm) {
     try {
         const result = await queryAsync('SELECT login FROM user_credentials WHERE login = ?', [name]);
 
-
+    // sprawdzamy czy email ktory chcemy zarejestrowac nie jest juz w uzytku
         if (result.length > 0) {
             return { status: 403, message: 'This email is already in use' };
         } else if (password !== password_confirm) {
@@ -20,6 +20,8 @@ async function registerUser(name, email, password, password_confirm) {
         const basic_age = 111
         const basic_address = "Noland"
 
+        // dodawanie do tablicy user_credentials nowego usera podczas rejestracji
+
         await queryAsync(`
             INSERT INTO user_credentials (login, email, password, userTypeID) 
             VALUES (?, ?, ?, 3)`, 
@@ -29,6 +31,9 @@ async function registerUser(name, email, password, password_confirm) {
             FROM user_credentials 
             WHERE email = ?`,
             [email]);
+
+        // dodanie do tablicy user_profile nowego usera o bazowych danych
+
         await queryAsync(`
             INSERT INTO user_profile 
             (description, nick, profilePhoto, full_name,age,phone,address,userID,games_library,games_downloaded) 
