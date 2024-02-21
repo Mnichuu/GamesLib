@@ -9,11 +9,13 @@ const { loginUser } = require('./controller/login');
 const { DB2Array, 
     news2Array, 
     news2ArrayUnlogged, 
-    library2Array } = require('./controller/db2array');
+    library2Array, profile2Array
+} = require('./controller/db2array');
 const { addGame2Mysql } = require('./controller/admin');
 const { addGameToLibrary } = require('./controller/addGameToLibrary');
 const { verifyGame } = require('./controller/verifyGame');
 const { addGameToVerification } = require('./controller/addGameToVerification');
+const { downloadGame } = require('./controller/downloadGame');
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -145,6 +147,7 @@ app.post("/download-game", async (req, res) => {
         .find(row => row.startsWith('userId='))
         .split('=')[1];
     downloadGame(gameID, userID);
+
     res.redirect("/views/yourGames");
 });
 
