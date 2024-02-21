@@ -9,6 +9,20 @@ async function addGameToLibrary(gameID, userID) {
         INSERT INTO library (userID, gameID, isDownloaded) 
         VALUES (?, ?, ?);`, 
         [userID, gameID, 0]);
+        const games_number = await queryAsync(`
+            SELECT COUNT(*) AS number_of 
+            FROM library WHERE userID = ?`,
+            [userID]);
+        const is_downloaded = await queryAsync(`
+            SELECT COUNT(*) AS games_downloaded 
+            FROM library 
+            WHERE isDownloaded = 1 AND userID = ?`,
+            [userID]);
+        await queryAsync(`
+            UPDATE user_profile 
+            SET  games_library = ?, games_downloaded = ? 
+            WHERE userID = ?`,
+            [games_number[0].number_of, is_downloaded[0].games_downloaded,userID]);
 
         news2Array(userID);
         library2Array(userID);
