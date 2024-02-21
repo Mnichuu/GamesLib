@@ -2,19 +2,19 @@ const PrefabGenerateUser = (function () {
     return {
         addUserProfiles
     };
-
+        // ponizej funkcja wyswietlajaca caly profil w zaleznosci od id uzytkownika ktory sie loguje oraz dwa popupy aktywowane po nacisnieciu przyciskow
     function addUserProfiles(container, userData) {
         userData.forEach(userData => {
             if (userData.userID == User.getUserId()) {
                 container.innerHTML += generateUser(userData, userData.userID);
 
-                // Kod dla pierwszego przycisku
+                // Kod dla przycisku edit (popup)
                 document.querySelectorAll('.btn.btn-primary').forEach(button => {
                     button.addEventListener('click', () => {
                         showPopup(userData); // Funkcja do wyświetlania okna popup
                     });
                 });
-
+                // Kod dla przycisku change profile photo (popup)
                 document.querySelectorAll('.button2').forEach(button => {
                     button.addEventListener('click', () => {
                         showPopup_avatar(userData); // Funkcja do wyświetlania okna popup dla drugiego przycisku
@@ -25,6 +25,8 @@ const PrefabGenerateUser = (function () {
         });
 
     }
+
+    // funkcja generujaca caly profil uzytkownika z wszystkimi kontenerami oraz tablica wyswietlajaca opis uzytkownika
 
     function generateUser(userData, userId) {
         const username = userData.nick || 'Brak nazwy użytkownika';
@@ -92,6 +94,8 @@ const PrefabGenerateUser = (function () {
     `;
     }
 
+    // popup wyswietlajacy formularz do edycji opisu uzytkownika
+
     function showPopup(userData) {
         // Create a container div for the popup
         const popupContainer = document.createElement('div');
@@ -142,6 +146,8 @@ const PrefabGenerateUser = (function () {
 
     }
 
+    // popup wyswietlajacy formularz do zmiany zdjecia profilowego
+
     function showPopup_avatar(userData) {
         const userID = userData.userID;
         const popupContainer_2 = document.createElement('div_2');
@@ -159,6 +165,7 @@ const PrefabGenerateUser = (function () {
         document.body.appendChild(popupContainer_2);
     }
 
+    // petla generujaca grid ze zdjeciami profilowymi do wyboru
 
     function generateAvatarButtons(userData) {
         let avatarButtonsHTML = '';

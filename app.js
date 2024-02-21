@@ -2,13 +2,13 @@ const express = require('express');
 const path = require("path");
 const dotenv = require('dotenv');
 
-const { UserDescriptionEdit,
+const { UserDescriptionEdit, 
     UserProfilePicture } = require('./controller/profile');
 const { registerUser } = require('./controller/register');
 const { loginUser } = require('./controller/login');
-const { DB2Array,
-    news2Array,
-    news2ArrayUnlogged,
+const { DB2Array, 
+    news2Array, 
+    news2ArrayUnlogged, 
     library2Array } = require('./controller/db2array');
 const { addGame2Mysql } = require('./controller/admin');
 const { addGameToLibrary } = require('./controller/addGameToLibrary');
@@ -23,6 +23,7 @@ const publicDir = path.join(__dirname, './public');
 app.use(express.static(publicDir));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 
 app.get("/", (req, res) => {
     res.render("index");
@@ -80,11 +81,11 @@ app.post("/auth/yourGames", async (req, res) => {
     res.redirect("/views/yourGames");
 });
 
-// TODO: dodanie osobnego pliku z tablicą i inne query dla profilu
+
 app.post("/auth/profile", async (req, res) => {
     const { user_name, user_full_name, user_age, user_phone, user_address, user_description,userID } = req.body;
     result = UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
-
+    
     const d = new Date();
     d.setTime(d.getTime() + (30 * 60 * 1000));
     if(user_name && user_name != "") {
