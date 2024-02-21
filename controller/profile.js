@@ -37,7 +37,7 @@ async function UserDescriptionEdit(user_name, user_full_name, user_age, user_pho
             UPDATE user_profile 
             SET description = ?, nick = ?, full_name = ?, age = ?, phone = ?, address = ?  
             WHERE userID = ?`, 
-            [user_description, user_name,user_full_name, user_age, user_phone, userID]);
+            [user_description, user_name,user_full_name, user_age, user_phone, user_address, userID]);
 
         profile2Array(userID);
 
