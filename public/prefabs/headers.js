@@ -66,11 +66,11 @@ const PrefabHeader = (function(){
         } else if (userType == User.UZYTKOWNIK_ZALOGOWANY) {
             return generatePageElementWithForm("Sklep", "news")
                 + generatePageElementWithForm("Twoje Gry", "yourGames")
-                + generatePageElementWithForm(`${User.getUserNick()}`, "profile");
+                + generatePageElement(`${User.getUserNick()}`, "profile");
         } else if (userType == User.TWORCA){
             return generatePageElementWithForm("Sklep", "news")
                 + generatePageElement("Dodaj Grę", "admin")
-                + generatePageElementWithForm(`${User.getUserNick()}`, "profile");
+                + generatePageElement(`${User.getUserNick()}`, "profile");
         } else {
              return generatePageElementWithForm("Sklep", "news");
          }

@@ -86,20 +86,20 @@ app.post("/auth/yourGames", async (req, res) => {
 app.post("/auth/profile", async (req, res) => {
     const { user_name, user_full_name, user_age, user_phone, user_address, user_description,userID } = req.body;
     result = UserDescriptionEdit(user_name, user_full_name, user_age, user_phone, user_address, user_description,userID);
+    
     const d = new Date();
     d.setTime(d.getTime() + (30 * 60 * 1000));
     if(user_name && user_name != "") {
         res.cookie("userNick", user_name, { expires: d, path: '/' });
     }
 
-    DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
     res.redirect("/views/profile");
 });
 
 app.post("/auth/avatar", async (req, res) => {
     const {avatar_picture_id,userID} = req.body;
     UserProfilePicture(avatar_picture_id, userID);
-    DB2Array("SELECT * FROM user_profile", '', "page_profile.js");
+
     res.redirect("/views/profile");
 });
 

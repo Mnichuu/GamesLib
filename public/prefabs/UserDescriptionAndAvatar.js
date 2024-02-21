@@ -54,7 +54,7 @@ const PrefabGenerateUser = (function () {
                         Wszystkie pobrane gry: ${games_downloaded}
                     </div>
                     <div class="all-games-in-library">
-                        Wszystkie gry w bibliotece ${all_games}
+                        Wszystkie gry w bibliotece: ${all_games}
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@ const PrefabGenerateUser = (function () {
         const phone = userData.phone;
         const address = userData.address;
         const description = userData.description;
-        const userID = userData. userID;
+        const userID = userData.userID;
         popupContainer.className = 'popup-container';
 
         // Create the form HTML

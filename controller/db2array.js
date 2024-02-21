@@ -61,7 +61,19 @@ function library2Array (userID) {
             SELECT * FROM library 
             JOIN games ON library.gameID = games.gameID 
             WHERE userID=?`, 
-            userID, "page_yourGames.js");
+            [userID], "page_yourGames.js");
+    } catch (error) {
+        console.log(error);
+        return { status: 500, message: 'Internal Server Error' };
+    }
+}
+
+function profile2Array (userID) {
+    try {
+        DB2Array(`
+            SELECT * FROM user_profile 
+            WHERE userID=?`, 
+            [userID], "page_profile.js");
     } catch (error) {
         console.log(error);
         return { status: 500, message: 'Internal Server Error' };
@@ -72,5 +84,6 @@ module.exports={
     DB2Array,
     news2Array,
     news2ArrayUnlogged,
-    library2Array
+    library2Array,
+    profile2Array
 };
